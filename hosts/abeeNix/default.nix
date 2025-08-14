@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, username, hostname,... }:
 
 {
   imports =
@@ -14,12 +14,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "abeeNix"; # Define your hostname.
+  networking.hostName = hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -37,9 +33,9 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.abee = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "Elizabeth";
+    description = "Abee user";
     extraGroups = [ "networkmanager" "wheel" ];
     openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxS+EO9has3Kcuo+O+kNRroyWMjV+RUfOATTzEmmVzR"
@@ -60,13 +56,11 @@
     zsh
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  fonts.packages = with pkgs; [
+    fira-code
+    fira-code-symbols
+    nerd-fonts.fira-code
+  ];
 
   # List services that you want to enable:
 
@@ -80,6 +74,9 @@
     };
     openFirewall = true;
   };
+
+  # Enable xwayland
+  programs.xwayland.enable = true;
 
   # Shell setup
   programs.zsh.enable = true;

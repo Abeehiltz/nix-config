@@ -1,37 +1,51 @@
 {
-    description = "Abee NixOS flake";
+    description = "Abee flake";
 
     inputs = {
         # NixOS official package source version 25.05
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+        # Home Manager
         home-manager.url = "github:nix-community/home-manager/master";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs: 
       let
-        lib = nixpkgs.lib;
-        system = "x86_64-linux";
-        pkgs = nixpkgs.legacyPackages.${system};
+        inherit (self) outputs;
+
+        # Function for Home Manager configuration
+        mkHomeConfiguration = 
+          system: username: hostname:
+          home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs { inherit system; };
+            extraSpecialArgs = {
+              inherit inputs outputs username hostname;
+              hmModules = "${self}/modules/home-manager";
+            };
+            modules = [
+              ./home/${username}/${hostname}
+            ];
+          }; 
       in {
         nixosConfigurations = {
           abeeNix = nixpkgs.lib.nixosSystem {
-            inherit system;
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs outputs;
+              username = "abee";
+              hostname = "abeeNix";
+            };
             modules = [
-              # Import the previous configuration.nix we used,
-              # so the old configuration file still takes effect
-              ./configuration.nix
+              ./hosts/abeeNix
             ];
           };
         };
 
         homeConfigurations = {
-          abee = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [ 
-              ./home.nix 
-            ];
-          };
+          "abee@abeeNix" = mkHomeConfiguration "x86_64-linux" "abee" "abeeNix";
         };
-    };
+      };
+
+   
 }

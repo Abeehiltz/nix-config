@@ -13,6 +13,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       "${nixosModules}/common"
+      "${nixosModules}/desktop/hyprland"
 
       # Hardware includes
       inputs.nixos-hardware.nixosModules.common-gpu-amd

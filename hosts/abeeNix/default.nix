@@ -9,10 +9,15 @@
   ...
 } :
 {
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = [ 
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       "${nixosModules}/common"
+
+      # Hardware includes
+      inputs.nixos-hardware.nixosModules.common-gpu-amd
+      inputs.nixos-hardware.nixosModules.common-pc-ssd
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
     ];
 
   networking.hostName = hostname; # Define your hostname.

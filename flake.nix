@@ -35,6 +35,7 @@
               inherit inputs outputs;
               username = "abee";
               hostname = "abeeNix";
+              nixosModules = "${self}/modules/nixos";
             };
             modules = [
               ./hosts/abeeNix

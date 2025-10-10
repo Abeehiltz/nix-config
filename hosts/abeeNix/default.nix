@@ -14,6 +14,7 @@
       ./hardware-configuration.nix
       "${nixosModules}/common"
       "${nixosModules}/desktop/hyprland"
+      "${nixosModules}/programs/steam"
 
       # Hardware includes
       inputs.nixos-hardware.nixosModules.common-gpu-amd

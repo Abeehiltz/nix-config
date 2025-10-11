@@ -2,10 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username, ... }:
+{ config, pkgs, username, lib, ... }:
 {
   # Boot config
   boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
     loader.systemd-boot.enable = false;
     loader.efi.canTouchEfiVariables = true;
     loader.grub = {
@@ -15,6 +16,13 @@
       useOSProber = true;
     };
   };
+ 
+
+  # For x11
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
+  hardware.graphics.enable = true;
 
   # Networking
   networking.networkmanager.enable = true;
@@ -46,12 +54,19 @@
   # User configuration
   users.users.${username} = {
     isNormalUser = true;
+    uid = 3001;
     shell = pkgs.zsh;
     description = "Abee user";
     extraGroups = [ "networkmanager" "wheel" ];
     openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxS+EO9has3Kcuo+O+kNRroyWMjV+RUfOATTzEmmVzR"
     ];
+  };
+
+  # Group configuration
+  users.groups.${username} = {
+    gid = 3001;
+    members = [ "${username}" ];
   };
 
   # Allow unfree packages
@@ -93,5 +108,17 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  qt.enable = true;
+
+  # Enable PipeWire for sound
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
 
 }

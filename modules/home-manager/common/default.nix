@@ -7,7 +7,8 @@
 }:
 {
   imports = [
-    ../terminal/zsh
+#    ../terminal/zsh
+    ../terminal/fish
     ../terminal/ohmyposh
     ../programs/git
   ];

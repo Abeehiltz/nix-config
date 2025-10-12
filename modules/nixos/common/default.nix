@@ -106,7 +106,8 @@
 
   # Shell setup
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
 
   qt.enable = true;
 

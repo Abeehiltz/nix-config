@@ -11,6 +11,12 @@
 
         # nixOS Hardware for optimisation
         nixos-hardware.url = "github:nixos/nixos-hardware";
+    
+        # silent SDDM theme
+        silentSDDM = {
+          url = "github:uiriansan/SilentSDDM";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs: 
@@ -25,6 +31,7 @@
             extraSpecialArgs = {
               inherit inputs outputs username hostname;
               hmModules = "${self}/modules/home-manager";
+              themeFolder = ./theming;
             };
             modules = [
               ./home/${username}/${hostname}
@@ -39,6 +46,7 @@
               username = "abee";
               hostname = "abeeNix";
               nixosModules = "${self}/modules/nixos";
+              themeFolder = ./theming;
             };
             modules = [
               ./hosts/abeeNix

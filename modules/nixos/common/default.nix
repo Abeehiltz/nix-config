@@ -55,7 +55,7 @@
   users.users.${username} = {
     isNormalUser = true;
     uid = 3001;
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     description = "Abee user";
     extraGroups = [ "networkmanager" "wheel" ];
     openssh.authorizedKeys.keys = [

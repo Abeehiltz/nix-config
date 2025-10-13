@@ -11,9 +11,11 @@
 #    ../terminal/zsh
     ../terminal/fish
     ../terminal/ohmyposh
+
     ../programs/git
     ../programs/zen-browser
    
+    ../desktop/hyprland
   ];
 
 

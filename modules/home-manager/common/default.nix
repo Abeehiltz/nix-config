@@ -1,5 +1,6 @@
 {
   outputs,
+  inputs,
   username,
   hostname,
   pkgs,
@@ -11,7 +12,10 @@
     ../terminal/fish
     ../terminal/ohmyposh
     ../programs/git
+    ../programs/zen-browser
+   
   ];
+
 
   home = {
     username = username;
@@ -26,11 +30,13 @@
     eza    # Modern ls
     fd     # Find alternative
     zoxide # Better cd
-
     lazygit
     fastfetch
-
     jq
+
+    # Applications
+    vesktop
+
 
     # Kubernetes
     talosctl

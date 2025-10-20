@@ -9,8 +9,9 @@
 {
   imports = [
 #    ../terminal/zsh
+#    ../terminal/ohmyposh
     ../terminal/fish
-    ../terminal/ohmyposh
+    ../terminal/starship
 
     ../programs/git
     ../programs/zen-browser

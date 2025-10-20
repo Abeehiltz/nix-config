@@ -11,4 +11,5 @@
       "$mainMod, T, exec, $term"
       "$mainMod, B, exec, $browser"
     ];
+  };
 }

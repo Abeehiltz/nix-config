@@ -6,7 +6,8 @@
   programs.kitty = {
     enable = true;
     enableGitIntegration = true;
+    shellIntegration.enableFishIntegration = true;
 
-    font = "FiraCode Nerd Font"; 
+    font.name = "FiraCode Nerd Font"; 
   };
 }

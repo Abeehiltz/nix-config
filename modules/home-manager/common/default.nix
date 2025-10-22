@@ -13,6 +13,7 @@
     ../terminal/fish
     ../terminal/starship
 
+    ../programs/kitty
     ../programs/git
     ../programs/zen-browser
    

@@ -1,6 +1,7 @@
 {...}:
 {
   wayland.windowManager.hyprland.settings = {
+    source = "~/.config/hypr/colors-hyprland.conf"; # Wallust colors generated
     general = {
       gaps_in = 5;
       gaps_out = 10;

@@ -40,6 +40,7 @@
     lazygit
     fastfetch
     jq
+    unzip
 
     # Applications
     vesktop

@@ -11,6 +11,9 @@
       "$mainMod, T, exec, $term"
       "$mainMod, B, exec, $browser"
 
+      # App launcher
+      "$mainMod, N, exec, rofi -show drun -run-command 'uwsm app -- {cmd}'"
+
     ];
 
     bindm = [

@@ -19,6 +19,8 @@
     ../programs/rofi
    
     ../desktop/hyprland
+
+    ../theming/wallust
   ];
 
 

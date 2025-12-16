@@ -2,7 +2,6 @@
 {
   imports = [
     "${hmModules}/common"
-    "${hmModules}/desktop/hyprland"
   ];
 
   # Let Home Manager install and manage itself.

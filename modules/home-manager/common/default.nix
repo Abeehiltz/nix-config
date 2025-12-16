@@ -16,11 +16,6 @@
     ../programs/kitty
     ../programs/git
     ../programs/zen-browser
-    ../programs/rofi
-   
-    ../desktop/hyprland
-
-    ../theming/wallust
   ];
 
 

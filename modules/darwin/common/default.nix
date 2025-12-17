@@ -1,16 +1,12 @@
 {
   outputs,
   pkgs,
-  userConfig,
+  username,
   ...
 }:
 {
   # Nixpkgs configuration
   nixpkgs = {
-    overlays = [
-      outputs.overlays.stable-packages
-    ];
-
     config = {
       allowUnfree = true;
     };
@@ -26,11 +22,12 @@
   };
 
   users.users.${username} = {
-    isNormalUser = true;
-    uid = 3001;
     shell = pkgs.fish;
     description = "Abee user";
+    uid = 501;
   };
+
+  users.knownUsers = [ "${username}" ];
 
   system.primaryUser = "${username}";
 
@@ -42,6 +39,9 @@
     fira-code-symbols
     nerd-fonts.fira-code
   ];
+
+  # Shell setup
+  programs.fish.enable = true;
 
   # TO delete later
         environment.systemPackages = with pkgs; [

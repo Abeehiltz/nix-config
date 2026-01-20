@@ -2,10 +2,14 @@
 {
   programs.git = {
     enable = true;
-    userName = username;
-    userEmail = "36138393+Abeehiltz@users.noreply.github.com";
 
-    extraConfig = {
+    settings.user = {
+      email = "36138393+Abeehiltz@users.noreply.github.com";
+      name = username;
+    };
+
+
+    settings = {
       init.defaultBranch = "main";
       pull.rebase = true;
     };

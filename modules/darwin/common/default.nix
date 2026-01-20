@@ -25,6 +25,7 @@
     shell = pkgs.fish;
     description = "Abee user";
     uid = 501;
+    home = "/Users/${username}";
   };
 
   users.knownUsers = [ "${username}" ];

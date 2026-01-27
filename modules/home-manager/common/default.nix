@@ -12,6 +12,7 @@
 #    ../terminal/ohmyposh
     ../terminal/fish
     ../terminal/starship
+    ../terminal/zoxide
 
     ../programs/kitty
     ../programs/git

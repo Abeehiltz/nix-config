@@ -12,6 +12,12 @@
         # nixOS Hardware for optimisation
         nixos-hardware.url = "github:nixos/nixos-hardware";
     
+        # niri-flake to configure niri through nix
+        niri-flake = {
+          url = "github:sodiboo/niri-flake";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         # silent SDDM theme
         silentSDDM = {
           url = "github:uiriansan/SilentSDDM";

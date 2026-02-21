@@ -9,16 +9,17 @@
     '';
   };
 in {
-  programs.niri {
-    enable = true;
-  };
+  imports = [ inputs.niri-flake.nixosModules.niri ];
 
-  security.polkit.enable = true; 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.swaylock = {};
+  nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+  };
 
   environment.systemPackages = with pkgs; [
     kitty
     xwayland-satellite
   ];
-};
+}

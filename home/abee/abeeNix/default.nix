@@ -2,7 +2,7 @@
 {
   imports = [
     "${hmModules}/common"
-    "${hmModules}/desktop/hyprland"
+  #  "${hmModules}/desktop/niri"
   ];
 
   # Let Home Manager install and manage itself.

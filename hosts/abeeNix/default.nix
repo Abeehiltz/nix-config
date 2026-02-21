@@ -13,7 +13,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       "${nixosModules}/common"
-      "${nixosModules}/desktop/hyprland"
+      "${nixosModules}/desktop/niri"
       "${nixosModules}/programs/steam"
 
       # Hardware includes

@@ -18,6 +18,12 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        # Noctalia shelll
+        noctalia = {
+          url = "github:noctalia-dev/noctalia-shell";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         # silent SDDM theme
         silentSDDM = {
           url = "github:uiriansan/SilentSDDM";

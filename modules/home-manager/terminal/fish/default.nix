@@ -23,6 +23,9 @@
       lta3 = "eza -lTag --level=3 --icons=always";
       lta4 = "eza -lTag --level=4 --icons=always";
 
+      # zoxide, better cd
+      cd = "z";
+
       # git
       lg = "lazygit";
     };

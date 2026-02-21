@@ -6,7 +6,8 @@
 {
   # Boot config
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
+    kernelPackages = pkgs.linuxPackages_latest;
+
     loader.systemd-boot.enable = false;
     loader.efi.canTouchEfiVariables = true;
     loader.grub = {

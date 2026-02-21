@@ -1,4 +1,4 @@
-{innputs, nhModules, ...}
+{inputs, hmModules, ...}
 :
 {
   imports = [
@@ -8,8 +8,7 @@
     ./animations.nix
     ./theme.nix
 
-    "${nhModules}/programs/rofi"
-    "${nhModules}/programs/wallust"
+    "${hmModules}/programs/rofi"
   ];
 
   wayland.windowManager.hyprland = {

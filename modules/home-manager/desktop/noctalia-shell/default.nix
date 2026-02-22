@@ -1,9 +1,10 @@
 { pkgs, inputs, ... }:
 {
   imports = [ inputs.noctalia.homeModules.default ];
-
+  
   programs.noctalia-shell = {
     enable = true;
+    systemd.enable = true;
 
     settings = {
       # configure noctalia here
@@ -18,6 +19,10 @@
               }
               {
                 id = "ActiveWindow";
+              }
+              {
+                id = "AudioVisualizer";
+                hideWhenIdle = true;
               }
           ];
           center = [
@@ -37,6 +42,9 @@
               id = "Volume";
             }
             {
+              id = "Microphone";
+            }
+            {
               formatHorizontal = "HH:mm";
               formatVertical = "HH mm";
               id = "Clock";
@@ -54,5 +62,6 @@
       location = {
         name = "Luxembourg, Luxembourg";
       };
+    };
   }; 
 }

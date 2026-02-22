@@ -8,34 +8,33 @@
     settings = {
       # configure noctalia here
       bar = {
-        density = "compact";
-        position = "right";
+        density = "default";
+        position = "top";
         showCapsule = false;
         widgets = {
           left = [
-            {
-              id = "ControlCenter";
-              useDistroLogo = true;
-            }
-            {
-              id = "Network";
-            }
-            {
-              id = "Bluetooth";
-            }
+              {
+                id = "Launcher";
+              }
+              {
+                id = "ActiveWindow";
+              }
           ];
           center = [
             {
               hideUnoccupied = false;
               id = "Workspace";
-              labelMode = "none";
             }
           ];
           right = [
             {
-              alwaysShowPercentage = false;
-              id = "Battery";
-              warningThreshold = 30;
+              id = "Tray";
+            }
+            {
+              id = "NotificationHistory";
+            }
+            {
+              id = "Volume";
             }
             {
               formatHorizontal = "HH:mm";
@@ -44,9 +43,16 @@
               useMonospacedFont = true;
               usePrimaryColor = true;
             }
+            {
+              id = "ControlCenter";
+              useDistroLogo = true;
+            }
           ];
         };
       };
       colorSchemes.predefinedScheme = "Monochrome";
+      location = {
+        name = "Luxembourg, Luxembourg";
+      };
   }; 
 }

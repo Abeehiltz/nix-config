@@ -21,5 +21,6 @@ in {
   environment.systemPackages = with pkgs; [
     kitty
     xwayland-satellite
+    wl-clipboard
   ];
 }

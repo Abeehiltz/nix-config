@@ -44,7 +44,7 @@
               colorizeIcons = false;
               hideMode = "hidden";
               id = "ActiveWindow";
-              maxWidth = 145;
+              maxWidth = 300;
               scrollingMode = "hover";
               showIcon = true;
               textColor = "none";
@@ -398,7 +398,7 @@
       dock = {
         enabled = true;
         position = "bottom";
-        displayMode = "always_visible";
+        displayMode = "auto_hide";
         dockType = "floating";
         backgroundOpacity = 1;
         floatingRatio = 1;

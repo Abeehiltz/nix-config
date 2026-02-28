@@ -2,8 +2,8 @@
 {
   imports = [
     "${hmModules}/common"
-  #  "${hmModules}/desktop/niri"
-     "${hmModules}/desktop/noctalia-shell"
+    "${hmModules}/desktop/niri"
+    "${hmModules}/desktop/noctalia-shell"
   ];
 
   # Let Home Manager install and manage itself.

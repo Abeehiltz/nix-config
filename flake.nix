@@ -43,7 +43,7 @@
         };
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs: 
+    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, ... }@inputs: 
       let
         inherit (self) outputs;
 
@@ -71,7 +71,10 @@
               nixosModules = "${self}/modules/nixos";
               themeFolder = ./theming;
             };
-            modules = [ ./hosts/${hostname} ];
+            modules = [ 
+              ./hosts/${hostname} 
+              niri-flake.nixosModules.niri
+            ];
           };
 
         # Function for MacOS

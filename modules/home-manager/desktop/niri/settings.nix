@@ -9,6 +9,7 @@
       prefer-no-csd = true;
 
       input = {
+        workspace-auto-back-and-forth = true;
         keyboard.xkb.layout = "us";
         mouse = {
           left-handed = true; # thanks to lift left I need to use this.

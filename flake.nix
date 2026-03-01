@@ -36,6 +36,11 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        firefox-addons = {
+          url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         nix-darwin = {
           #url =  "github:nix-darwin/nix-darwin/master";
           url = "github:nix-darwin/nix-darwin/master";
@@ -51,7 +56,7 @@
         mkHomeConfiguration = 
           system: username: hostname:
           home-manager.lib.homeManagerConfiguration {
-            pkgs = import nixpkgs { inherit system; };
+            pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
             extraSpecialArgs = {
               inherit inputs outputs username hostname;
               hmModules = "${self}/modules/home-manager";
@@ -73,7 +78,6 @@
             };
             modules = [ 
               ./hosts/${hostname} 
-              niri-flake.nixosModules.niri
             ];
           };
 

@@ -73,6 +73,11 @@ in
     "Super+F".action=maximize-column;
     "Super+Ctrl+F".action=expand-column-to-available-width;
     
+    # Resize column
+    "Super+H".action.set-column-width = [ "50%" ];     
+    "Super+Minus".action.set-column-width = [ "-10%" ];
+    "Super+Equal".action.set-column-width = [ "+10%" ];
+
     # Floating
     "Super+V".action = toggle-window-floating;
   };

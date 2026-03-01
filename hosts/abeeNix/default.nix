@@ -15,6 +15,7 @@
       "${nixosModules}/common"
       "${nixosModules}/desktop/niri"
       "${nixosModules}/programs/steam"
+      "${nixosModules}/programs/1password"
 
       # Hardware includes
       inputs.nixos-hardware.nixosModules.common-gpu-amd

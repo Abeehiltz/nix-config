@@ -17,6 +17,7 @@
     ../programs/kitty
     ../programs/git
     ../programs/zen-browser
+    ../programs/yazi
   ];
 
 

@@ -11,6 +11,8 @@
   programs.zen-browser = {
     enable = true;
 
+    suppressXdgMigrationWarning = true;
+
     nativeMessagingHosts = [ 
          pkgs._1password-gui
        ];

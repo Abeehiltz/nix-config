@@ -8,6 +8,8 @@
     settings = {
       prefer-no-csd = true;
 
+      screenshot-path = "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S_Screenshot.png";
+     
       input = {
         workspace-auto-back-and-forth = true;
         keyboard.xkb.layout = "us";
@@ -44,6 +46,24 @@
         NIXOS_OZONE_WL = "1";
         ELECTRON_OZONE_PLATFORM_HINT="wayland";
       };
+
+    # To remove when include works through niri-flake
+    layout = {
+      gaps = 6;
+
+      struts = {
+        left = 32;
+        right = 32;
+      };
+      focus-ring = {
+        width = 2;
+        active   = {color="#e47967";};
+        inactive = {color="#231b1a";};
+        urgent   = {color="#fd4663";};
+      };
+    };
+
+
     };
   };
 }

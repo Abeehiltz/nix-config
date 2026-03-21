@@ -38,9 +38,7 @@
     fastfetch
     jq
     unzip
-    #screenshot tools:
-    grim
-    slurp
+    cliphist
 
 
     # Applications

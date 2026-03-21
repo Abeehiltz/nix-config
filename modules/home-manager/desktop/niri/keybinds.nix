@@ -8,6 +8,11 @@ in
     # Noctalia commands
     # Toggle launcher
     "Super+Space".action.spawn-sh = "noctalia-shell  ipc call launcher toggle"; 
+    
+    # Clipboard history
+    "Super+V".action.spawn-sh = "noctalia-shell ipc call launcher clipboard";
+
+    "Super+L".action.spawn-sh = "noctalia-shell ipc call lockScreen lock";
     # Volume
     "XF86AudioRaiseVolume".action.spawn-sh = "noctalia-shell ipc call volume increase"; 
     "XF86AudioLowerVolume".action.spawn-sh = "noctalia-shell ipc call volume decrease"; 
@@ -79,6 +84,16 @@ in
     "Super+Equal".action.set-column-width = [ "+10%" ];
 
     # Floating
-    "Super+V".action = toggle-window-floating;
+    "Super+Z".action = toggle-window-floating;
+
+    # Screenshot settings
+    ## Niri inbuilt screenshot tool using same windows keybind
+    "Super+Shift+S".action.screenshot = {show-pointer=false; };
+
+    # Screenshot active window and copy to clipboard
+    "Ctrl+Print".action.screenshot-window = { write-to-disk=false; };
+
+    # Screenshot active screen
+    "Print".action.screenshot-screen = { write-to-disk=false; };
   };
 }

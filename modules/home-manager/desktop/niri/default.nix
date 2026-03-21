@@ -6,5 +6,6 @@
     ./settings.nix
     ./keybinds.nix
     ./autostart.nix
+    ./windows-rules.nix
   ];
 }

@@ -12,7 +12,6 @@
         workspace-auto-back-and-forth = true;
         keyboard.xkb.layout = "us";
         mouse = {
-          left-handed = true; # thanks to lift left I need to use this.
           accel-profile = null;
         };
       };
@@ -42,6 +41,8 @@
         XDG_CURRENT_DESKTOP = "niri";
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         QT_QPA_PLATFORM = "wayland";
+        NIXOS_OZONE_WL = "1";
+        ELECTRON_OZONE_PLATFORM_HINT="wayland";
       };
     };
   };

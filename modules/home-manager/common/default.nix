@@ -43,10 +43,10 @@
 
     # Applications
     vesktop
-    piper # To manage mouse buttons
     feishin # Music player
     mpv # media player for feishin
     solaar # logitech mouse
+    obsidian
 
     # Kubernetes
     talosctl

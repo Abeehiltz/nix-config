@@ -42,7 +42,8 @@
     # Applications
     vesktop
     piper # To manage mouse buttons
-
+    feishin # Music player
+    mpv # media player for feishin
 
     # Kubernetes
     talosctl

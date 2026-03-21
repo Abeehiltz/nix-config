@@ -562,7 +562,7 @@
       colorSchemes = {
         useWallpaperColors = true;
         predefinedScheme = "Monochrome";
-        darkMode = false;
+        darkMode = true;
         schedulingMode = "off";
         manualSunrise = "06:30";
         manualSunset = "20:00";

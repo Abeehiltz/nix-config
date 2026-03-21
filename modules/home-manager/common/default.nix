@@ -13,6 +13,7 @@
     ../terminal/fish
     ../terminal/starship
     ../terminal/zoxide
+    ../terminal/fastfetch
 
     ../programs/kitty
     ../programs/git
@@ -35,7 +36,6 @@
     fd     # Find alternative
     zoxide # Better cd
     lazygit
-    fastfetch
     jq
     unzip
     cliphist

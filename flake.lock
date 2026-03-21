@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "dw-proton": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773921118,
+        "narHash": "sha256-ZBb59LTDi00YbqtEv4WGELVQp1OVUuIKsH1OFj3ccJs=",
+        "owner": "imaviso",
+        "repo": "dwproton-flake",
+        "rev": "f32d216870fcbc4a3a24764f39bbbaa3991f7f53",
+        "type": "github"
+      },
+      "original": {
+        "owner": "imaviso",
+        "repo": "dwproton-flake",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -252,6 +272,7 @@
     },
     "root": {
       "inputs": {
+        "dw-proton": "dw-proton",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "niri-flake": "niri-flake",

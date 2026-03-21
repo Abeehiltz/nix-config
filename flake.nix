@@ -46,9 +46,15 @@
           url = "github:nix-darwin/nix-darwin/master";
           inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        # dw proton
+        dw-proton = {
+          url = "github:imaviso/dwproton-flake";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, ... }@inputs: 
+    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, dw-proton, ... }@inputs: 
       let
         inherit (self) outputs;
 
@@ -58,7 +64,7 @@
           home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
             extraSpecialArgs = {
-              inherit inputs outputs username hostname;
+              inherit inputs outputs username hostname self;
               hmModules = "${self}/modules/home-manager";
               themeFolder = ./theming;
             };

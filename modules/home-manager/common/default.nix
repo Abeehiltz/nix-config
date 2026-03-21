@@ -41,6 +41,7 @@
 
     # Applications
     vesktop
+    piper # To manage mouse buttons
 
 
     # Kubernetes

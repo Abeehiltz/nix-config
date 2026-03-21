@@ -571,7 +571,18 @@
       };
       templates = {
         activeTemplates = [
-    
+          {
+            enabled = true;
+            id = "zenBrowser";
+          }
+          {
+            enabled = true;
+            id = "kitty";
+          }
+          {
+            enabled = true;
+            id = "discord";
+          }
         ];
         enableUserTheming = false;
       };

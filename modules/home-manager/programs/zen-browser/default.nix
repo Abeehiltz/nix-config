@@ -11,8 +11,6 @@
   programs.zen-browser = {
     enable = true;
 
-    suppressXdgMigrationWarning = true;
-
     nativeMessagingHosts = [ 
          pkgs._1password-gui
        ];
@@ -27,7 +25,11 @@
       };
     };
 
-    profiles.default.extensions.packages = 
+    profiles."default".settings = {
+      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+    };
+
+    profiles."default".extensions.packages = 
       with inputs.firefox-addons.packages.${pkgs.hostPlatform.system}; [
       ];
   };

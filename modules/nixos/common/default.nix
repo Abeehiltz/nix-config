@@ -124,4 +124,8 @@
     jack.enable = true;
   };
 
+  # Logitech mouse configuration
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
+
 }

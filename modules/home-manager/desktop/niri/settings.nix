@@ -62,7 +62,9 @@
         urgent   = {color="#fd4663";};
       };
     };
-
+      debug = {
+        honor-xdg-activation-with-invalid-serial = true;
+      };
 
     };
   };

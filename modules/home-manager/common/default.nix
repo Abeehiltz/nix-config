@@ -14,6 +14,7 @@
     ../terminal/starship
     ../terminal/zoxide
     ../terminal/fastfetch
+    ../terminal/ssh
 
     ../programs/kitty
     ../programs/git

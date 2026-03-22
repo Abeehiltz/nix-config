@@ -72,6 +72,9 @@ in
     # Move window on the right to current column
     "Super+Comma".action=consume-window-into-column;
     "Super+Period".action=expel-window-from-column;
+    # Same with alt, to also remove the tty swap in gui
+    "Alt+Left".action = consume-window-into-column;
+    "Alt+Right".action = expel-window-from-column;
 
     # Fullscreen
     "Super+Shift+F".action=fullscreen-window;
@@ -95,5 +98,8 @@ in
 
     # Screenshot active screen
     "Print".action.screenshot-screen = { write-to-disk=false; };
+
+    # 1password
+    "Ctrl+Shift+Space".action.spawn-sh = "1password --quick-access";
   };
 }

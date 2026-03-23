@@ -48,6 +48,7 @@
     mpv # media player for feishin
     solaar # logitech mouse
     obsidian
+    jellyfin-desktop
 
     # Kubernetes
     talosctl

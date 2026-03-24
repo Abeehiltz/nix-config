@@ -18,9 +18,59 @@ in {
     package = pkgs.niri;
   };
 
+  # repeated with home-manager config to fix https://github.com/sodiboo/niri-flake/issues/509
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk ];
+    config.niri = { 
+      default = [ "gtk" "gnome" ];
+      "org.freedesktop.impl.portal.Access" = "gtk";
+      "org.freedesktop.impl.portal.Notification" = "gtk";
+      "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+      "org.freedesktop.impl.portal.FileChooser" = "gtk";
+    };
+    config.common.default = [ "gtk" "gnome" ];
+  };
+
   environment.systemPackages = with pkgs; [
     kitty
     xwayland-satellite
     wl-clipboard
   ];
+
+  # Enable security services
+  services.gnome.gnome-keyring.enable = true;
+  security.polkit.enable = true;
+  security.pam.services = {
+    gdm.enableGnomeKeyring = true;
+  };
+
+  systemd.user.services.xdg-desktop-portal = {
+    after = [ "xdg-desktop-autostart.target" ];
+  };
+
+  systemd.user.services.xdg-desktop-portal-gtk = {
+    after = [ "xdg-desktop-autostart.target" ];
+  };
+
+  systemd.user.services.xdg-desktop-portal-gnome = {
+    after = [ "xdg-desktop-autostart.target" ];
+  };
+
+  systemd.user.services.niri-flake-polkit = {
+    after = [ "xdg-desktop-autostart.target" ];
+  };
+
+  # Configure SDDM
+  services.displayManager = {
+    enable = true;
+    sddm = {
+      enable = true;
+      wayland = {
+        compositor = "kwin";
+        enable = true;
+      };
+    };
+  };
 }

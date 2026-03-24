@@ -12,7 +12,7 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk ];
     config.niri = { 
       default = [ "gtk" "gnome" ];
       "org.freedesktop.impl.portal.Access" = "gtk";

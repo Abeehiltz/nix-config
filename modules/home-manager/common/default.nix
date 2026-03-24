@@ -49,6 +49,7 @@
     solaar # logitech mouse
     obsidian
     jellyfin-desktop
+    xivlauncher
 
     # Kubernetes
     talosctl

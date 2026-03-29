@@ -20,6 +20,7 @@
     ../programs/git
     ../programs/zen-browser
     ../programs/yazi
+    ../programs/gallery-dl
   ];
 
 

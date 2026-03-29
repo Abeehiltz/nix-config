@@ -81,6 +81,11 @@
     wget
     vim
     zsh
+
+    # configure python
+    (python3.withPackages (python-pkgs: with python-pkgs; [
+
+    ]))
   ];
 
   fonts.packages = with pkgs; [

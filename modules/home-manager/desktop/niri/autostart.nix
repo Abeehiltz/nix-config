@@ -4,5 +4,6 @@
       { command = ["noctalia-shell"]; }
       { command = ["xwayland-satellite"]; }
       { command = ["vesktop"]; } 
+      { command = ["steam"]; }
     ];
 }

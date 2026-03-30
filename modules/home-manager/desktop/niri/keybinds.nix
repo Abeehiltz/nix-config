@@ -35,10 +35,10 @@ in
     };
 
     # Focus window
-    "Super+Left".action = focus-column-left;
-    "Super+Right".action=focus-column-right;
-    "Super+Up".action=focus-window-up;
-    "Super+Down".action=focus-window-down;
+    "Super+Left".action = focus-column-or-monitor-left;
+    "Super+Right".action=focus-column-or-monitor-right;
+    "Super+Up".action=focus-window-or-workspace-up;
+    "Super+Down".action=focus-window-or-workspace-down;
     "Super+U".action=focus-workspace-up;
     "Super+D".action=focus-workspace-down;
 

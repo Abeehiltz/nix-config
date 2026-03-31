@@ -47,14 +47,9 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        # dw proton
-        dw-proton = {
-          url = "github:imaviso/dwproton-flake";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, dw-proton, ... }@inputs: 
+    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, ... }@inputs: 
       let
         inherit (self) outputs;
 

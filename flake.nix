@@ -42,14 +42,18 @@
         };
 
         nix-darwin = {
-          #url =  "github:nix-darwin/nix-darwin/master";
           url = "github:nix-darwin/nix-darwin/master";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        affinity-nix = {
+          url = "github:mrshmllow/affinity-nix";
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, ... }@inputs: 
+    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, affinity-nix, ... }@inputs: 
       let
         inherit (self) outputs;
 

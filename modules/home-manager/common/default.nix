@@ -62,6 +62,9 @@
     fira-code
     fira-code-symbols
     nerd-fonts.fira-code
+
+    # affinity-nix https://github.com/mrshmllow/affinity-nix
+    inputs.affinity-nix.packages.x86_64-linux.v3
   ];
 
 

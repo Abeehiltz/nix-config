@@ -37,10 +37,14 @@
     eza    # Modern ls
     fd     # Find alternative
     zoxide # Better cd
+    ouch   # unified compression helper
+    btop
+    dysk
     lazygit
     jq
     unzip
     cliphist
+    openvpn
 
 
     # Applications

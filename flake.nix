@@ -51,9 +51,14 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        nvf = {
+          url = "github:NotAShelf/nvf";
+          inputs.nixpkgs.follows = "nixpkgs";
+       };
+
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, affinity-nix, ... }@inputs: 
+    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, affinity-nix, nvf, ... }@inputs: 
       let
         inherit (self) outputs;
 

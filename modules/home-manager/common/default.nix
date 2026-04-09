@@ -21,6 +21,7 @@
     ../programs/zen-browser
     ../programs/yazi
     ../programs/gallery-dl
+    ../programs/nvim
   ];
 
 

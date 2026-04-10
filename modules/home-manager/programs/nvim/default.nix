@@ -30,6 +30,10 @@
       vim.statusline.lualine = {
         enable = true;
       };
+
+      vim.filetree.neo-tree = {
+        enable = true;
+      };
     };
   };
 }

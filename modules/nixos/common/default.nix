@@ -27,6 +27,9 @@
 
   # Networking
   networking.networkmanager.enable = true;
+  networking.firewall.allowedTCPPorts = [ 
+    2234 # Soulseek
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Luxembourg";

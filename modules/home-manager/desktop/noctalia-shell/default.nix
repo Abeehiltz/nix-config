@@ -583,6 +583,26 @@
             enabled = true;
             id = "discord";
           }
+          {
+            enabled = true;
+            id = "yazi";
+          }
+          {
+            enabled = true;
+            id = "qt";
+          }
+          {
+            enabled = true;
+            id = "gtk";
+          }
+          {
+            enabled = true;
+            id = "steam";
+          }
+          {
+            enabled = false; # To enable when it handles starship from nixos config
+            id = "starship";
+          }
         ];
         enableUserTheming = false;
       };

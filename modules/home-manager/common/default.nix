@@ -56,6 +56,7 @@
     obsidian
     jellyfin-desktop
     xivlauncher
+    nicotine-plus
 
     # Kubernetes
     talosctl

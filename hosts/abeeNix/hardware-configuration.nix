@@ -35,6 +35,15 @@
       fsType = "nfs";
     };
 
+  fileSystems."/mnt/app-data" =
+    { device = "fs1.abeehiltz.com:/mnt/app-pool/data";
+      fsType = "nfs";
+    };
+  
+  fileSystems."/mnt/backups" =
+    { device = "fs1.abeehiltz.com:/mnt/pool/backups";
+      fsType = "nfs";
+    };
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

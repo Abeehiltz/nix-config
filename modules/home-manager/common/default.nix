@@ -46,6 +46,7 @@
     unzip
     cliphist
     openvpn
+    #busybox
 
 
     # Applications
@@ -57,6 +58,7 @@
     jellyfin-desktop
     xivlauncher
     nicotine-plus
+    brave # When I need chromium based browser
 
     # Kubernetes
     talosctl

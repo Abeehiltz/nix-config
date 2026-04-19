@@ -13,6 +13,16 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [ "irqpoll" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [
+    "apfs"
+    "exfat"
+    "ext4"
+    "nfs"
+    "nfs4"
+    "ntfs"
+    "cifs"
+    "f2fs"
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/783a9ac4-8e08-4a76-aafc-7ab296b3affe";
@@ -26,23 +36,51 @@
     };
 
   fileSystems."/mnt/storage" =
-    { device = "fs1.abeehiltz.com:/mnt/pool/storage";
+    { device = "10.10.60.5:/mnt/pool/storage";
       fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=300"
+        "noatime"
+        "nfsvers=4.0"
+      ];
     };
 
   fileSystems."/mnt/media" =
-    { device = "fs1.abeehiltz.com:/mnt/pool/media";
+    { device = "10.10.60.5:/mnt/pool/media";
       fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=300"
+        "noatime"
+        "nfsvers=4.0"
+      ];
     };
 
   fileSystems."/mnt/app-data" =
-    { device = "fs1.abeehiltz.com:/mnt/app-pool/data";
+    { device = "10.10.60.5:/mnt/app-pool/data";
       fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=300"
+        "noatime"
+        "nfsvers=4.0"
+      ];
     };
   
   fileSystems."/mnt/backups" =
-    { device = "fs1.abeehiltz.com:/mnt/pool/backups";
+    { device = "10.10.60.5:/mnt/pool/backups";
       fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=300"
+        "noatime"
+        "nfsvers=4.0"
+      ];
     };
   swapDevices = [ ];
 

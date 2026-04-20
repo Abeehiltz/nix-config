@@ -22,6 +22,7 @@
     ../programs/yazi
     ../programs/gallery-dl
     ../programs/nvim
+    ../programs/beets
   ];
 
 

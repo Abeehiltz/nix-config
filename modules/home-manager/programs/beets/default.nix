@@ -7,7 +7,7 @@
       directory = "/mnt/media/Music";
       library = "/home/abee/musiclibrary.db";
   
-      plugins = [ "fetchart" "missing" "musicbrainz" "mbsync" "scrub" ];
+      plugins = [ "fetchart" "missing" "musicbrainz" "mbsync" "scrub" "duplicates" ];
   
       musicbrainz = {
         searchlimit = 10;

@@ -14,7 +14,6 @@
   boot.kernelParams = [ "irqpoll" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [
-    "apfs"
     "exfat"
     "ext4"
     "nfs"

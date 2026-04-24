@@ -18,7 +18,7 @@
         };
       };
       outputs = {
-        "DP-3" = {
+        "Microstep MPG322UX OLED 0x01010101" = {
           mode = {
             width = 3840;
             height = 2160;
@@ -28,7 +28,7 @@
           position = { x = 2560; y = 0; };
           focus-at-startup = true;
         };
-        "DP-1" = {
+        "Acer Technologies XB271HU A #ASO7TBPV1Ovd" = {
           mode = {
             width = 2560;
             height = 1440;

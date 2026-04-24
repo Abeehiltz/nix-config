@@ -4,7 +4,6 @@
   
   programs.noctalia-shell = {
     enable = true;
-    systemd.enable = true;
 
     settings = {
       bar = {
@@ -511,7 +510,7 @@
         criticalUrgencyDuration = 15;
         clearDismissed = true;
         saveToHistory = {
-          low = true;
+          low = false;
           normal = true;
           critical = true;
         };

@@ -424,6 +424,26 @@
         "type": "github"
       }
     },
+    "nixos-xivlauncher-rb": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777061512,
+        "narHash": "sha256-57RnImuvlODY1fMnpdBpyYtrAoCWK8b2C8btN49Nlck=",
+        "owner": "The1Penguin",
+        "repo": "nixos-xivlauncher-rb",
+        "rev": "26186f7423dd8d0f24a3c460b4ff0058e43c863f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "The1Penguin",
+        "repo": "nixos-xivlauncher-rb",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1770073757,
@@ -629,6 +649,7 @@
         "niri-flake": "niri-flake",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
+        "nixos-xivlauncher-rb": "nixos-xivlauncher-rb",
         "nixpkgs": "nixpkgs_3",
         "noctalia": "noctalia",
         "nvf": "nvf",

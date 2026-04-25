@@ -51,6 +51,7 @@
 
 
     # Applications
+    lact
     vesktop
     feishin # Music player
     mpv # media player for feishin

@@ -56,13 +56,9 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        nixos-xivlauncher-rb = {
-          url = "github:The1Penguin/nixos-xivlauncher-rb";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, affinity-nix, nvf, nixos-xivlauncher-rb, ... }@inputs: 
+    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, affinity-nix, nvf, ... }@inputs: 
       let
         inherit (self) outputs;
 
@@ -92,6 +88,7 @@
             };
             modules = [ 
               ./hosts/${hostname} 
+              # For xivlauncher-rb
             ];
           };
 

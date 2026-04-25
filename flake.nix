@@ -56,6 +56,11 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        millennium = {
+          url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
     };
 
     outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, affinity-nix, nvf, ... }@inputs: 

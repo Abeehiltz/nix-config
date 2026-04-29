@@ -85,6 +85,11 @@
     vim
     zsh
 
+    # For customizing keyboard
+    via
+    qmk
+    qmk-udev-rules
+
     # configure python
     (python3.withPackages (python-pkgs: with python-pkgs; [
 
@@ -95,10 +100,16 @@
     fira-code
     fira-code-symbols
     nerd-fonts.fira-code
+    # For electron apps
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
   ];
 
   # List services that you want to enable:
   services.resolved.enable = true;
+
+  services.udev.packages = [ pkgs.via pkgs.qmk-udev-rules ];
 
   # Enable the OpenSSH daemon.
   services.openssh = {

@@ -60,10 +60,10 @@
           url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
           inputs.nixpkgs.follows = "nixpkgs";
         };
-
+        dw-proton.url = "github:imaviso/dwproton-flake";
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, affinity-nix, nvf, ... }@inputs: 
+    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, affinity-nix, nvf, dw-proton, ... }@inputs: 
       let
         inherit (self) outputs;
 

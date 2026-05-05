@@ -64,17 +64,18 @@
               enableScrollWheel = true;
               focusedColor = "primary";
               followFocusedScreen = false;
-              groupedBorderOpacity = 1;
+              groupedBorderOpacity = 0.99;
               hideUnoccupied = false;
               iconScale = 0.8;
               id = "Workspace";
               labelMode = "index";
               occupiedColor = "secondary";
               pillSize = 0.6;
-              showApplications = false;
+              showApplications = true;
+              showApplicationsHover = false;
               showBadge = true;
               showLabelsOnlyWhenOccupied = true;
-              unfocusedIconsOpacity = 1;
+              unfocusedIconsOpacity = 0.75;
             }
           ];
           right = [

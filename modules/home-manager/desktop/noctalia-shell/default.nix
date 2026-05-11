@@ -512,7 +512,7 @@
         clearDismissed = true;
         saveToHistory = {
           low = false;
-          normal = true;
+          normal = false;
           critical = true;
         };
         sounds = {

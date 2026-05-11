@@ -73,6 +73,10 @@
     members = [ "${username}" ];
   };
 
+  users.groups.plugdev = {
+    members = [ "${username}" ];
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

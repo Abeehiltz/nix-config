@@ -94,4 +94,5 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.amdgpu.overdrive.enable = true;
+  hardware.steam-hardware.enable = true; # For steam controller
 }

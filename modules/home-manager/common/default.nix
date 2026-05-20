@@ -67,6 +67,7 @@
     kompose
     kubectl
     kubernetes-helm
+    k9s
 
     # Fonts
     fira-code

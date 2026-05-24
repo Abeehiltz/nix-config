@@ -58,8 +58,9 @@
 
         millennium = {
           #url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-          url = "github:SteamClientHomebrew/Millennium/e2c66a276e579ee73c5151b01897bf63503aa12c?dir=packages/nix&narHash=sha256-hIjlaMu6ildZqBMpxRVieHAGUjxsFSgWi24QMmpqM%2BY=";
-          inputs.nixpkgs.follows = "nixpkgs";
+          url = "github:SteamClientHomebrew/Millennium/next?dir=packages/nix";
+          #url = "github:SteamClientHomebrew/Millennium/e2c66a276e579ee73c5151b01897bf63503aa12c?dir=packages/nix&narHash=sha256-hIjlaMu6ildZqBMpxRVieHAGUjxsFSgWi24QMmpqM%2BY=";
+          #inputs.nixpkgs.follows = "nixpkgs";
         };
         dw-proton.url = "github:imaviso/dwproton-flake";
     };

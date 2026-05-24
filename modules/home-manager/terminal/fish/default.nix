@@ -40,4 +40,6 @@
     '';
   };
 
+  programs.man.generateCaches = false;
+
 }

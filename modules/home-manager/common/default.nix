@@ -45,6 +45,7 @@
     lazygit
     jq
     unzip
+    zip
     cliphist
     openvpn
     #busybox

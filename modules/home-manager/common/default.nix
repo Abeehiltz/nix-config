@@ -59,7 +59,7 @@
     solaar # logitech mouse
     obsidian
     jellyfin-desktop
-    xivlauncher
+    #xivlauncher
     nicotine-plus
     brave # When I need chromium based browser
 

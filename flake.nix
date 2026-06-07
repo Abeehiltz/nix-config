@@ -98,6 +98,7 @@
             modules = [ 
               ./hosts/${hostname} 
               # For xivlauncher-rb
+              nixos-xivlauncher-rb.nixosModules.default
             ];
           };
 

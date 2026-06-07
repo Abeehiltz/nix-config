@@ -1,8 +1,6 @@
 {
   outputs,
-  inputs,
   username,
-  hostname,
   pkgs,
   ...
 }:
@@ -62,6 +60,7 @@
     #xivlauncher
     nicotine-plus
     brave # When I need chromium based browser
+    outputs.packages.x86_64-linux.raphael-rs
 
     # Kubernetes
     talosctl

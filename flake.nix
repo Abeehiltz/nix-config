@@ -46,11 +46,6 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        affinity-nix = {
-          url = "github:mrshmllow/affinity-nix";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
-
         nvf = {
           url = "github:NotAShelf/nvf";
           inputs.nixpkgs.follows = "nixpkgs";
@@ -65,11 +60,21 @@
           url = "github:The1Penguin/nixos-xivlauncher-rb";
           inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        raphael-rs-src = {
+          url = "github:KonaeAkira/raphael-rs";
+          flake = false;
+        };
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, affinity-nix, nvf, dw-proton, nixos-xivlauncher-rb, ... }@inputs: 
+    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, nvf, dw-proton, nixos-xivlauncher-rb, ... }@inputs: 
       let
         inherit (self) outputs;
+
+        pkgsFor = system: import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
 
         # Function for Home Manager configuration
         mkHomeConfiguration = 
@@ -116,6 +121,10 @@
           };
 
       in {
+        packages.x86_64-linux.raphael-rs =
+          (pkgsFor "x86_64-linux").callPackage ./pkgs/raphael-rs { 
+            src = inputs.raphael-rs-src;
+          };
         nixosConfigurations = {
           abeeNix = mkNixosConfiguration "abeeNix" "abee";
         };

@@ -13,6 +13,20 @@
         };
         clip-to-geometry = true;
       }
+      {
+        matches = [
+          {
+            app-id = "steam";
+            title = "^notificationtoasts_\d+_desktop$";
+          }
+        ];
+        open-focused=false;
+        default-floating-position = {
+          relative-to = "bottom-right";
+          x = 0;
+          y = 0;
+        };
+      }
     ];
 
     layer-rules = [

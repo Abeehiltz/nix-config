@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 {
     programs.niri.settings.spawn-at-startup = [
-      { command = ["noctalia-shell"]; }
+      { command = ["noctalia"]; }
       { command = ["xwayland-satellite"]; }
       { command = ["vesktop"]; } 
       { command = ["steam"]; }

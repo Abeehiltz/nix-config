@@ -7,16 +7,16 @@ in
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # Noctalia commands
     # Toggle launcher
-    "Super+Space".action.spawn-sh = "noctalia-shell  ipc call launcher toggle"; 
+    "Super+Space".action.spawn-sh = "noctalia msg panel-toggle launcher"; 
     
     # Clipboard history
-    "Super+V".action.spawn-sh = "noctalia-shell ipc call launcher clipboard";
+    "Super+V".action.spawn-sh = "noctalia msg panel-toggle clipboard";
 
-    "Super+L".action.spawn-sh = "noctalia-shell ipc call lockScreen lock";
+    "Super+L".action.spawn-sh = "noctalia msg session lock";
     # Volume
-    "XF86AudioRaiseVolume".action.spawn-sh = "noctalia-shell ipc call volume increase"; 
-    "XF86AudioLowerVolume".action.spawn-sh = "noctalia-shell ipc call volume decrease"; 
-    "XF86AudioMute".action.spawn-sh = "noctalia-shell ipc call volume muteOutput"; 
+    "XF86AudioRaiseVolume".action.spawn-sh = "noctalia msg volume-up"; 
+    "XF86AudioLowerVolume".action.spawn-sh = "noctalia msg volume-down"; 
+    "XF86AudioMute".action.spawn-sh = "noctalia msg volume-mute"; 
 
 
     # Opening programs

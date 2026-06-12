@@ -1,292 +1,40 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 {
-  imports = [ inputs.noctalia.homeModules.default ];
+  imports = [ 
+    inputs.noctalia.homeModules.default 
+    ./bar.nix
+    ./dock.nix
+    ./theming.nix
+    ./desktop.nix
+    ./control-center.nix
+  ];
   
   programs.noctalia = {
     enable = true;
 
+    settings.shell = {
+      font_family = "FiraCode Nerd Font Mono";
+      setup_wizard_enabled = false;
+      niri_overview_type_to_launch_enabled = true;
+      avatar_path = "/home/abee/.avatar";
+      middle_click_opens_widget_settings = false;
+
+      panel = {
+        session_placement = "floating";
+        open_near_click_control_center = true;
+      };
+    };
+
+    settings.osd = {
+      kinds = {
+        brightness = false;
+        wifi = false;
+        bluetooth = false;
+        caffeine = false;
+      };
+    };
+
     settings = {
-      bar = {
-        barType = "simple";
-        position = "top";
-        monitors = [
-    
-        ];
-        density = "default";
-        showOutline = false;
-        showCapsule = false;
-        capsuleOpacity = 1;
-        capsuleColorKey = "none";
-        widgetSpacing = 6;
-        fontScale = 1;
-        backgroundOpacity = 0.93;
-        useSeparateOpacity = false;
-        floating = false;
-        marginVertical = 4;
-        marginHorizontal = 4;
-        frameThickness = 8;
-        frameRadius = 12;
-        outerCorners = false;
-        hideOnOverview = false;
-        displayMode = "always_visible";
-        autoHideDelay = 500;
-        autoShowDelay = 150;
-        showOnWorkspaceSwitch = true;
-        widgets = {
-          left = [
-            {
-              icon = "rocket";
-              iconColor = "none";
-              id = "Launcher";
-            }
-            {
-              colorizeIcons = false;
-              hideMode = "hidden";
-              id = "ActiveWindow";
-              maxWidth = 300;
-              scrollingMode = "hover";
-              showIcon = true;
-              textColor = "none";
-              useFixedWidth = false;
-            }
-            {
-              colorName = "primary";
-              hideWhenIdle = true;
-              id = "AudioVisualizer";
-              width = 200;
-            }
-          ];
-          center = [
-            {
-              characterCount = 2;
-              colorizeIcons = false;
-              emptyColor = "secondary";
-              enableScrollWheel = true;
-              focusedColor = "primary";
-              followFocusedScreen = false;
-              groupedBorderOpacity = 0.99;
-              hideUnoccupied = false;
-              iconScale = 0.8;
-              id = "Workspace";
-              labelMode = "index";
-              occupiedColor = "secondary";
-              pillSize = 0.6;
-              showApplications = true;
-              showApplicationsHover = false;
-              showBadge = true;
-              showLabelsOnlyWhenOccupied = true;
-              unfocusedIconsOpacity = 0.75;
-            }
-          ];
-          right = [
-            {
-              blacklist = [
-    
-              ];
-              chevronColor = "none";
-              colorizeIcons = false;
-              drawerEnabled = true;
-              hidePassive = false;
-              id = "Tray";
-              pinned = [
-    
-              ];
-            }
-            {
-              hideWhenZero = false;
-              hideWhenZeroUnread = false;
-              iconColor = "none";
-              id = "NotificationHistory";
-              showUnreadBadge = true;
-              unreadBadgeColor = "primary";
-            }
-            {
-              displayMode = "onhover";
-              iconColor = "none";
-              id = "Volume";
-              middleClickCommand = "pwvucontrol || pavucontrol";
-              textColor = "none";
-            }
-            {
-              displayMode = "onhover";
-              iconColor = "none";
-              id = "Microphone";
-              middleClickCommand = "pwvucontrol || pavucontrol";
-              textColor = "none";
-            }
-            {
-              clockColor = "none";
-              customFont = "";
-              formatHorizontal = "HH:mm";
-              formatVertical = "HH mm";
-              id = "Clock";
-              tooltipFormat = "HH:mm ddd, MMM dd";
-              useCustomFont = false;
-            }
-            {
-              colorizeDistroLogo = false;
-              colorizeSystemIcon = "none";
-              customIconPath = "";
-              enableColorization = false;
-              icon = "noctalia";
-              id = "ControlCenter";
-              useDistroLogo = true;
-            }
-          ];
-        };
-        screenOverrides = [
-    
-        ];
-      };
-      general = {
-        avatarImage = "/home/abee/.avatar";
-        dimmerOpacity = 0.2;
-        showScreenCorners = false;
-        forceBlackScreenCorners = false;
-        scaleRatio = 1.05;
-        radiusRatio = 0.3;
-        iRadiusRatio = 1;
-        boxRadiusRatio = 1;
-        screenRadiusRatio = 1;
-        animationSpeed = 1;
-        animationDisabled = false;
-        compactLockScreen = false;
-        lockScreenAnimations = false;
-        lockOnSuspend = true;
-        showSessionButtonsOnLockScreen = true;
-        showHibernateOnLockScreen = false;
-        enableShadows = true;
-        shadowDirection = "bottom_right";
-        shadowOffsetX = 2;
-        shadowOffsetY = 3;
-        language = "";
-        allowPanelsOnScreenWithoutBar = true;
-        showChangelogOnStartup = true;
-        telemetryEnabled = false;
-        enableLockScreenCountdown = true;
-        lockScreenCountdownDuration = 10000;
-        autoStartAuth = false;
-        allowPasswordWithFprintd = false;
-        clockStyle = "custom";
-        clockFormat = "yyyy-MM-dd HH:mm:ss ";
-        passwordChars = false;
-        lockScreenMonitors = [
-          "DP-3"
-        ];
-        lockScreenBlur = 0;
-        lockScreenTint = 0;
-        keybinds = {
-          keyUp = [
-            "Up"
-          ];
-          keyDown = [
-            "Down"
-          ];
-          keyLeft = [
-            "Left"
-          ];
-          keyRight = [
-            "Right"
-          ];
-          keyEnter = [
-            "Return"
-          ];
-          keyEscape = [
-            "Esc"
-          ];
-          keyRemove = [
-            "Del"
-          ];
-        };
-        reverseScroll = false;
-      };
-      ui = {
-        fontDefault = "Sans Serif";
-        fontFixed = "FiraCode Nerd Font Mono";
-        fontDefaultScale = 1;
-        fontFixedScale = 1;
-        tooltipsEnabled = true;
-        panelBackgroundOpacity = 0.93;
-        panelsAttachedToBar = true;
-        settingsPanelMode = "attached";
-        wifiDetailsViewMode = "grid";
-        bluetoothDetailsViewMode = "grid";
-        networkPanelView = "wifi";
-        bluetoothHideUnnamedDevices = false;
-        boxBorderEnabled = false;
-      };
-      location = {
-        name = "Luxembourg, Luxembourg";
-        weatherEnabled = true;
-        weatherShowEffects = true;
-        useFahrenheit = false;
-        use12hourFormat = false;
-        showWeekNumberInCalendar = true;
-        showCalendarEvents = true;
-        showCalendarWeather = true;
-        analogClockInCalendar = false;
-        firstDayOfWeek = 1;
-        hideWeatherTimezone = false;
-        hideWeatherCityName = false;
-      };
-      calendar = {
-        cards = [
-          {
-            enabled = true;
-            id = "calendar-header-card";
-          }
-          {
-            enabled = true;
-            id = "calendar-month-card";
-          }
-          {
-            enabled = true;
-            id = "weather-card";
-          }
-        ];
-      };
-      wallpaper = {
-        enabled = true;
-        overviewEnabled = true;
-        directory = "/home/abee/Pictures/Wallpapers";
-        monitorDirectories = [
-    
-        ];
-        enableMultiMonitorDirectories = false;
-        showHiddenFiles = false;
-        viewMode = "single";
-        setWallpaperOnAllMonitors = true;
-        fillMode = "crop";
-        fillColor = "#000000";
-        useSolidColor = false;
-        solidColor = "#1a1a2e";
-        automationEnabled = false;
-        wallpaperChangeMode = "random";
-        randomIntervalSec = 7200;
-        transitionDuration = 1500;
-        transitionType = "random";
-        skipStartupTransition = false;
-        transitionEdgeSmoothness = 0.05;
-        panelPosition = "follow_bar";
-        hideWallpaperFilenames = false;
-        overviewBlur = 0.4;
-        overviewTint = 0.6;
-        useWallhaven = false;
-        wallhavenQuery = "";
-        wallhavenSorting = "relevance";
-        wallhavenOrder = "desc";
-        wallhavenCategories = "111";
-        wallhavenPurity = "100";
-        wallhavenRatios = "";
-        wallhavenApiKey = "";
-        wallhavenResolutionMode = "atleast";
-        wallhavenResolutionWidth = "";
-        wallhavenResolutionHeight = "";
-        sortOrder = "name";
-        favorites = [
-    
-        ];
-      };
       appLauncher = {
         enableClipboardHistory = true;
         autoPasteClipboard = false;
@@ -394,36 +142,6 @@
         warningColor = "";
         criticalColor = "";
         externalMonitor = "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor";
-      };
-      dock = {
-        enabled = true;
-        position = "bottom";
-        displayMode = "auto_hide";
-        dockType = "floating";
-        backgroundOpacity = 1;
-        floatingRatio = 1;
-        size = 1;
-        onlySameOutput = true;
-        monitors = [
-    
-        ];
-        pinnedApps = [
-    
-        ];
-        colorizeIcons = false;
-        showLauncherIcon = true;
-        launcherPosition = "end";
-        launcherIconColor = "none";
-        pinnedStatic = true;
-        inactiveIndicators = false;
-        groupApps = true;
-        groupContextMenuMode = "extended";
-        groupClickAction = "cycle";
-        groupIndicatorStyle = "dots";
-        deadOpacity = 0.6;
-        animationSpeed = 1;
-        sitOnFrame = false;
-        showFrameIndicator = true;
       };
       notifications = {
         enabled = true;

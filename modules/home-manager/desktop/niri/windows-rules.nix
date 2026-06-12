@@ -6,12 +6,18 @@
       {
         matches = [{}];
         geometry-corner-radius = {
-          top-left = 10.0;
-          top-right = 10.0;
-          bottom-left = 10.0;
-          bottom-right = 10.0;
+          top-left = 20.0;
+          top-right = 20.0;
+          bottom-left = 20.0;
+          bottom-right = 20.0;
         };
         clip-to-geometry = true;
+      }
+      {
+        matches = [ { app-id="dev.noctalia.Noctalia.Settings"; } ];
+        open-floating = true;
+        default-column-width = { fixed = 1080; };
+        default-window-height = { fixed = 920; };
       }
       {
         matches = [
@@ -29,11 +35,13 @@
       }
     ];
 
-    layer-rules = [
+    layer-rules = [ 
       {
-        matches = [ { namespace = "^noctalia-overview*"; } ];
+        matches = [ { namespace="^noctalia-backdrop"; } ];
         place-within-backdrop = true;
       }
+
     ];
+
   };
 }

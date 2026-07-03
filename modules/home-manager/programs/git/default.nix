@@ -4,7 +4,7 @@
     enable = true;
 
     settings.user = {
-      email = "36138393+Abeehiltz@users.noreply.github.com";
+      email = "abeehiltz@noreply.hidden.com";
       name = username;
     };
 
@@ -22,8 +22,9 @@
       };
 
       user = {
-        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxS+EO9has3Kcuo+O+kNRroyWMjV+RUfOATTzEmmVzR";
+        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0yyNorhf6trd90BrJovuqK08ZVt75TD2CrvRLCUlz1";
       };
     };
   };
 }
+

@@ -1,6 +1,8 @@
-{...}:
+{pkgs,config,...}:
 let
- onePasswordPath = "~/.1password/agent.sock";
+  onePassPath = if pkgs.stdenv.isDarwin
+    then "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    else "${config.home.homeDirectory}/.1password/agent.sock";
 in
 {
   programs.ssh = {
@@ -20,7 +22,11 @@ in
     };
     extraConfig = ''
       Host *
-          IdentityAgent ${onePasswordPath}
+          IdentityAgent ${onePassPath}
+      Host forgejo.abeehiltz.com
+          HostName forgejo.machine.abeehiltz.com
+          Port 222
+          User git
     '';
   };
 }

@@ -46,7 +46,9 @@
     zip
     cliphist
     openvpn
-    #busybox
+    dnslookup
+    ansible
+    inetutils
 
 
     # Applications

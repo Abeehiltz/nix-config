@@ -52,8 +52,8 @@
         };
 
         millennium = {
-          #url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-          url = "github:SteamClientHomebrew/Millennium/next?dir=packages/nix";
+          url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+          #url = "github:SteamClientHomebrew/Millennium/next?dir=packages/nix";
         };
         dw-proton.url = "github:imaviso/dwproton-flake";
         nixos-xivlauncher-rb = {

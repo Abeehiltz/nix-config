@@ -6,6 +6,7 @@
   programs.steam = {
     enable = true;
     package = pkgs.millennium-steam; # millenium customization
+    protontricks.enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;

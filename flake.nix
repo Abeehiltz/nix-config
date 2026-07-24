@@ -65,6 +65,11 @@
           url = "github:KonaeAkira/raphael-rs";
           flake = false;
         };
+
+        nix-yazi-plugins = {
+          url = "github:lordkekz/nix-yazi-plugins";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, nvf, dw-proton, nixos-xivlauncher-rb, ... }@inputs: 

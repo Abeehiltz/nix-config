@@ -154,4 +154,12 @@
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 15d";
+  };
+  nix.optimise.automatic = true;
+  nix.optimise.dates = "weekly";
+
 }

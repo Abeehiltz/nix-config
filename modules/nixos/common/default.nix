@@ -98,6 +98,9 @@
     qmk
     qmk-udev-rules
 
+    # for iPhone
+    libimobiledevice
+
     # configure python
     (python3.withPackages (python-pkgs: with python-pkgs; [
 
@@ -161,5 +164,8 @@
   };
   nix.optimise.automatic = true;
   nix.optimise.dates = "weekly";
+
+  # For iPhone
+  services.usbmuxd.enable = true;
 
 }

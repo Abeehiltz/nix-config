@@ -66,6 +66,7 @@
     outputs.packages.x86_64-linux.raphael-rs
     vintagestory
     qbittorrent
+    iloader
 
     # Kubernetes
     talosctl

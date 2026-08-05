@@ -6,7 +6,7 @@
     shellWrapperName = "y";
     
     plugins = with pkgs.yaziPlugins; {
-      inherit toggle-pane;
+      inherit toggle-pane compress;
     };
 
     keymap = {
@@ -16,6 +16,11 @@
           run = "plugin toggle-pane max-preview";
           desc = "Maximize or restore the preview pane";
         }
+        {
+          on = [ "c" "a" "a" ];
+          run = "plugin compress";
+          desc = "Archive selected files";
+        }
       ];
     };
     settings = {
@@ -23,6 +28,23 @@
         max_width = 3840;
         max_height = 2160;
       };
+
+      opener = {
+        feh-fullscreen = [
+          {
+            run = ''feh -F -Z --start-at "$1" "$(dirname "$1")"'';
+            desc = "Open in feh (fullscreen)";
+            orphan = true;
+          }
+        ];
+      };
+
+      open.prepend_rules = [
+      {
+        mime = "image/*";
+        use = "feh-fullscreen";
+      }
+    ];
     };
   };
 }

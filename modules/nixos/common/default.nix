@@ -6,7 +6,17 @@
 {
   # Boot config
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+#    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_7_1.override {
+    argsOverride = rec {
+      src = pkgs.fetchurl {
+            url = "mirror://kernel/linux/kernel/v7.x/linux-${version}.tar.xz";
+            sha256 = "sha256-IqAZazy83zTcJ7d1YfTQQFhf00R+3JqzUxoax54wQec=";
+      };
+      version = "7.1.5";
+      modDirVersion = "7.1.5";
+      };
+  });
 
     kernel.sysctl = {
       "fs.inotify.max_user_watches" = "1048576";

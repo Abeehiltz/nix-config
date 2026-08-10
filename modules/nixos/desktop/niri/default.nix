@@ -1,21 +1,23 @@
-{ pkgs, inputs, themeFolder, ... 
-}: let
-  vivianBackground = pkgs.stdenv.mkDerivation {
-    name = "vivian.mkv";
-    src = "${themeFolder}/vivian.mkv";
-    dontUnpack = true;
-    installPhase = ''
-      cp $src $out
-    '';
-  };
-in {
-  imports = [ inputs.niri-flake.nixosModules.niri ];
+{ pkgs, inputs, ... 
+}:{
+  imports = [ inputs.niri-flake.nixosModules.niri inputs.noctalia-greeter.nixosModules.default ];
 
   nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
 
   programs.niri = {
     enable = true;
     package = pkgs.niri;
+  };
+
+  programs.noctalia-greeter = {
+    enable = true;
+    settings = {
+      cursor = {
+        theme = "Bibata-Modern-Ice";
+        size = 24;
+        path = "${pkgs.bibata-cursors}/share/icons";
+      };
+    };
   };
 
   # repeated with home-manager config to fix https://github.com/sodiboo/niri-flake/issues/509
@@ -63,15 +65,4 @@ in {
 #    after = [ "xdg-desktop-autostart.target" ];
 #  };
 
-  # Configure SDDM
-  services.displayManager = {
-    enable = true;
-    sddm = {
-      enable = true;
-      wayland = {
-        compositor = "kwin";
-        enable = true;
-      };
-    };
-  };
 }

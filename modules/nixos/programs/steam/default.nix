@@ -2,6 +2,12 @@
 {
   nixpkgs.overlays = [ inputs.millennium.overlays.default ];
 
+  # Add gamescope
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+
   # Steam gaming platform configuration
   programs.steam = {
     enable = true;

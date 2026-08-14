@@ -6,17 +6,17 @@
 {
   # Boot config
   boot = {
-#    kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_7_1.override {
-    argsOverride = rec {
-      src = pkgs.fetchurl {
-            url = "mirror://kernel/linux/kernel/v7.x/linux-${version}.tar.xz";
-            sha256 = "sha256-IqAZazy83zTcJ7d1YfTQQFhf00R+3JqzUxoax54wQec=";
-      };
-      version = "7.1.5";
-      modDirVersion = "7.1.5";
-      };
-  });
+    kernelPackages = pkgs.linuxPackages_latest;
+#    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_7_1.override {
+#    argsOverride = rec {
+#      src = pkgs.fetchurl {
+#            url = "mirror://kernel/linux/kernel/v7.x/linux-${version}.tar.xz";
+#            sha256 = "sha256-IqAZazy83zTcJ7d1YfTQQFhf00R+3JqzUxoax54wQec=";
+#      };
+#      version = "7.1.5";
+#      modDirVersion = "7.1.5";
+#      };
+#  });
 
     kernel.sysctl = {
       "fs.inotify.max_user_watches" = "1048576";
@@ -52,15 +52,15 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    LC_ADDRESS = "fr_LU.utf8";
+    LC_IDENTIFICATION = "fr_LU.utf8";
+    LC_MEASUREMENT = "fr_LU.utf8";
+    LC_MONETARY = "fr_LU.utf8";
+    LC_NAME = "en_GB.UTF-8";
+    LC_NUMERIC = "fr_LU.utf8";
+    LC_PAPER = "fr_LU.utf8";
+    LC_TELEPHONE = "fr_LU.utf8";
+    LC_TIME = "en_GB.UTF-8";
   };
 
   # Configure keymap in X11

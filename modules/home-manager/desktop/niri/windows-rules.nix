@@ -23,15 +23,25 @@
         matches = [
           {
             app-id = "steam";
-            title = "^notificationtoasts_\d+_desktop$";
+            title = ''^notificationtoasts_\d+_desktop$'';
           }
         ];
         open-focused=false;
         default-floating-position = {
           relative-to = "bottom-right";
-          x = 0;
-          y = 0;
+          x = 10;
+          y = 10;
         };
+      }
+      # Game opening weird new windows, now open as floating windows instead.
+      {
+        matches = [
+          {
+            app-id="^steam_app_.*$";
+            title = "Form";
+          }
+        ];
+        open-focused = false;
       }
     ];
 

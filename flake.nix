@@ -29,12 +29,6 @@
           url = "github:noctalia-dev/noctalia-greeter";
           inputs.nixpkgs.follows = "nixpkgs";
         };
-
-        # silent SDDM theme
-        silentSDDM = {
-          url = "github:uiriansan/SilentSDDM";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
   
         # Zen browser
         zen-browser = {

@@ -1,7 +1,7 @@
 {...}:
 {
   programs.noctalia.settings.dock = {
-    enabled = true;
+    enabled = false;
     reserve_space = false;
     auto_hide = true;
     icon_size = 36;

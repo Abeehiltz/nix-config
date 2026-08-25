@@ -16,6 +16,10 @@
         enable = true;
       };
 
+      vim.extraPackages = [
+        pkgs.yamllint
+      ];
+
       vim.clipboard = {
         enable = true;
         providers.wl-copy.enable = true;
@@ -27,6 +31,15 @@
         markdown.enable = true;
         helm.enable = true;
         yaml.enable = true;
+      };
+
+      # Yamllint diagnostics via nvim-lint
+      vim.diagnostics.nvim-lint = {
+        enable = true;
+        linters_by_ft = {
+          yaml = [ "yamllint" ];
+        };
+        lint_after_save = true;
       };
 
       vim.telescope = {

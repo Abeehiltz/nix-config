@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   ...
 }:
 {
@@ -38,7 +37,52 @@
       # Set greeting (optional - remove to disable)
       # set fish_greeting
     '';
+
+
+    functions = {
+      # Cleans up the local Nix install: keeps the 5 most recent profile
+      # generations, removes garbage, and hard-links duplicate store files.
+      nix-cleanup = ''
+        set -l keep 5
+
+        echo "📋 Checking profile generations (keeping newest $keep)..."
+        set -l gens (nix-env --list-generations | awk '{print $1}')
+        set -l total (count $gens)
+
+        if test $total -gt $keep
+          set -l n_delete (math $total - $keep)
+          set -l to_delete $gens[1..$n_delete]
+          echo "🗑  Deleting generations: $to_delete"
+          nix-env --delete-generations $to_delete
+        else
+          echo "   Only $total generation(s), nothing to delete."
+        end
+
+        echo "🧹 Collecting garbage (removing unreferenced store paths)..."
+        nix-collect-garbage -d
+
+        echo "📦 Optimising store (hard-linking identical files)..."
+        nix-store --optimise
+
+        echo "🔍 Verifying store integrity..."
+        nix-store --verify --check-contents
+
+        echo "✅ Done."
+        du -sh /nix/store 2>/dev/null
+      '';
+    };
+
   };
+
+  # Symlink fish's history file to ~/.history.
+  home.activation.fishHistoryLink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "$HOME/.local/share/fish"
+    if [ ! -e "$HOME/.history" ]; then
+      touch "$HOME/.history"
+    fi
+    ln -sf "$HOME/.history" "$HOME/.local/share/fish/fish_history"
+  '';
+
 
   programs.man.generateCaches = false;
 

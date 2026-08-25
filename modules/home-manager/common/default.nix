@@ -68,6 +68,7 @@
     qbittorrent
     iloader
 
+
     # Kubernetes
     talosctl
     kompose

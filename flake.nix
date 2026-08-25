@@ -70,9 +70,11 @@
           url = "github:lordkekz/nix-yazi-plugins";
           inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        llm-agents.url = "github:numtide/llm-agents.nix";
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, nvf, dw-proton, nixos-xivlauncher-rb, ... }@inputs: 
+    outputs = { self, nixpkgs, home-manager, nix-darwin, niri-flake, nvf, dw-proton, nixos-xivlauncher-rb, llm-agents, ... }@inputs: 
       let
         inherit (self) outputs;
 

@@ -17,6 +17,7 @@
       "${nixosModules}/programs/steam"
       "${nixosModules}/programs/1password"
       "${nixosModules}/programs/lact"
+      "${nixosModules}/programs/llm-agents"
       "${nixosModules}/programs/xivlauncher-rb"
 
       # Hardware includes

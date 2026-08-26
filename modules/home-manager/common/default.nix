@@ -31,6 +31,7 @@
     sessionVariables = {
       EDITOR = "vim";
     };
+    sessionPath = [ "$HOME/.local/bin" ];
   };
 
   home.packages = with pkgs; [

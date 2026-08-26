@@ -7,6 +7,12 @@
   programs.fish = {
     enable = true;
     
+    # Because home.sessionPath in common doesn't work for fish apparently
+    shellInit = ''
+      fish_add_path $HOME/.local/bin
+    '';
+
+
     shellAliases = {
       # eza aliases
       ls   = "eza --icons=always";

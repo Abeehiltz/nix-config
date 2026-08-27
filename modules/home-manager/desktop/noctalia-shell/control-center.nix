@@ -1,6 +1,11 @@
-{...}:
 {
   programs.noctalia.settings.control_center = {
+    sidebar = "full";
+    sidebar_section = "full";
+    width = 900;
+
+    calendar = { };
+
     shortcuts = [
       { type = "notification"; }
       { type = "nightlight"; }
@@ -9,9 +14,5 @@
       { type = "system"; }
       { type = "screen-time"; }
     ];
-
-    calendar = {
-      
-    };
   };
 }

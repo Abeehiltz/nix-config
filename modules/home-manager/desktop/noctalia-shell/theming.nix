@@ -1,4 +1,3 @@
-{...}:
 {
   programs.noctalia.settings.theme = {
     mode = "dark";
@@ -8,9 +7,25 @@
     templates = {
       enable_builtin_templates = true;
       enable_community_templates = true;
-      
-      builtin_ids = [ "niri" "gtk3" "gt4" "qt" "kitty" ];
-      community_ids = ["zen-browser" "neovim" "obsidian" "discord" "steam" "yazi"];
+
+      builtin_ids = [
+        "niri"
+        "gtk3"
+        "gt4"
+        "qt"
+        "kitty"
+      ];
+
+      community_ids = [
+        "feishin"
+        "zen-browser"
+        "discord"
+        "neovim"
+        "obsidian"
+        "steam"
+        "lazygit"
+        "yazi"
+      ];
     };
   };
 }

@@ -1,11 +1,13 @@
-{...}:
 {
   programs.noctalia.settings.dock = {
-    enabled = false;
-    reserve_space = false;
     auto_hide = true;
+    enabled = false;
     icon_size = 36;
-
-    pinned = [ "zen-beta" "steam" "feishin" ];
+    pinned = [
+      "zen-beta"
+      "steam"
+      "feishin"
+    ];
+    reserve_space = false;
   };
 }

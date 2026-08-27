@@ -5,5 +5,6 @@
       { command = ["xwayland-satellite"]; }
       { command = ["vesktop"]; } 
       { command = ["steam"]; }
+      { command = ["obsidian"]; }
     ];
 }

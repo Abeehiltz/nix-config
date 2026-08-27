@@ -33,6 +33,9 @@
 
       # git
       lg = "lazygit";
+
+      ## FFXIV 
+      act = "aetherless-meter";
     };
 
     # Fish has built-in autosuggestions and syntax highlighting

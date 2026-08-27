@@ -1,5 +1,8 @@
-{ config, pkgs, inputs, ...}
-:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.nvf.homeManagerModules.default
@@ -14,7 +17,16 @@
       vim.vimAlias = true;
       vim.lsp = {
         enable = true;
+        trouble.enable = true;
+        lightbulb.enable = true;
+        formatOnSave = true;
       };
+
+      vim.options = {
+        cursorline = true;
+      };
+
+      vim.startPlugins = [ pkgs.vimPlugins.base16-nvim ];
 
       vim.extraPackages = [
         pkgs.yamllint
@@ -33,7 +45,6 @@
         yaml.enable = true;
       };
 
-      # Yamllint diagnostics via nvim-lint
       vim.diagnostics.nvim-lint = {
         enable = true;
         linters_by_ft = {
@@ -54,10 +65,32 @@
         enable = true;
       };
 
+      vim.autocomplete.blink-cmp = {
+        enable = true;
+        setupOpts.signature.enabled = true;
+      };
+      vim.extraPlugins = {
+        tiny-inline-diagnostic = {
+          package = pkgs.vimPlugins.tiny-inline-diagnostic-nvim;
+          setup = ''
+            require("tiny-inline-diagnostic").setup({
+              preset = "simple",
+              transparent_cursorline = true;
+            })
+          '';
+        };
+      };
+
+      vim.diagnostics.config.virtual_text = false; # Disable Neovim's default virtaul text as as recommended by tiny-inline-diagnostic
+
+      vim.binds.whichKey.enable = true;
       vim.keymaps = [
         {
           key = "<leader>y";
-          mode = [ "n" "v" ];
+          mode = [
+            "n"
+            "v"
+          ];
           action = "\"+y";
           desc = "Yank to system (Wayland) clipboard";
         }
@@ -69,11 +102,39 @@
         }
         {
           key = "<leader>p";
-          mode = [ "n" "v" ];
+          mode = [
+            "n"
+            "v"
+          ];
           action = "\"+p";
           desc = "Paste from system clipboard";
         }
       ];
+
+      # Load noctalia theme
+      vim.luaConfigRC.noctalia-theme =
+        inputs.nvf.lib.nvim.dag.entryBefore [ "pluginConfigs" "lazyConfigs" "extraPluginConfigs" ]
+          ''
+            vim.o.termguicolors = true
+
+            local matugen_path = vim.fn.expand("~/.config/nvim/lua/matugen.lua")
+
+            local function load_noctalia_theme()
+              local chunk, err = loadfile(matugen_path)
+              if not chunk then
+                return
+              end
+              local ok, mod = pcall(chunk)
+              if ok and mod and mod.setup then
+                mod.setup()
+              end
+            end
+
+            load_noctalia_theme()
+
+            local signal = vim.uv.new_signal()
+            signal:start("sigusr1", vim.schedule_wrap(load_noctalia_theme))
+          '';
     };
   };
 }

@@ -61,8 +61,13 @@
         enable = true;
       };
 
-      vim.filetree.neo-tree = {
+      vim.utility.oil-nvim = {
         enable = true;
+        gitStatus.enable = true;
+        setupOpts = {
+          default_file_explorer = true;
+          view_options.show_hidden = true;
+        };
       };
 
       vim.autocomplete.blink-cmp = {
@@ -108,6 +113,18 @@
           ];
           action = "\"+p";
           desc = "Paste from system clipboard";
+        }
+        {
+          key = "-";
+          mode = "n";
+          action = "<CMD>Oil<CR>";
+          desc = "Open parent directory in Oil";
+        }
+        {
+          key = "<leader>-";
+          mode = "n";
+          action = "<CMD>Oil --float<CR>";
+          desc = "Open parent directory in Oil (floating)";
         }
       ];
 

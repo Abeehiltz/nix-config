@@ -1,10 +1,9 @@
-{ config, pkgs, ... }
-:
+{ config, pkgs, ... }:
 {
   programs.niri.settings = {
     window-rules = [
       {
-        matches = [{}];
+        matches = [ { } ];
         geometry-corner-radius = {
           top-left = 20.0;
           top-right = 20.0;
@@ -14,10 +13,14 @@
         clip-to-geometry = true;
       }
       {
-        matches = [ { app-id="dev.noctalia.Noctalia.Settings"; } ];
+        matches = [ { app-id = "dev.noctalia.Noctalia.Settings"; } ];
         open-floating = true;
-        default-column-width = { fixed = 1080; };
-        default-window-height = { fixed = 920; };
+        default-column-width = {
+          fixed = 1080;
+        };
+        default-window-height = {
+          fixed = 920;
+        };
       }
       {
         matches = [
@@ -26,7 +29,7 @@
             title = ''^notificationtoasts_\d+_desktop$'';
           }
         ];
-        open-focused=false;
+        open-focused = false;
         default-floating-position = {
           relative-to = "bottom-right";
           x = 10;
@@ -37,17 +40,37 @@
       {
         matches = [
           {
-            app-id="^steam_app_.*$";
+            app-id = "^steam_app_.*$";
             title = "Form";
           }
         ];
         open-focused = false;
       }
+      {
+        matches = [
+          {
+            app-id = "steam";
+            title = "Steam Big Picture Mode";
+          }
+        ];
+        open-focused = true;
+        open-fullscreen = true;
+        open-on-workspace = "steam";
+      }
+      {
+        matches = [
+          {
+            app-id = "steam";
+            title = "^Steam$";
+          }
+        ];
+        open-on-workspace = "steam";
+      }
     ];
 
-    layer-rules = [ 
+    layer-rules = [
       {
-        matches = [ { namespace="^noctalia-backdrop"; } ];
+        matches = [ { namespace = "^noctalia-backdrop"; } ];
         place-within-backdrop = true;
       }
 

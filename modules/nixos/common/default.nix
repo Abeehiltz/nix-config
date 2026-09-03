@@ -2,21 +2,27 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username, lib, ... }:
+{
+  config,
+  pkgs,
+  username,
+  lib,
+  ...
+}:
 {
   # Boot config
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-#    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_7_1.override {
-#    argsOverride = rec {
-#      src = pkgs.fetchurl {
-#            url = "mirror://kernel/linux/kernel/v7.x/linux-${version}.tar.xz";
-#            sha256 = "sha256-IqAZazy83zTcJ7d1YfTQQFhf00R+3JqzUxoax54wQec=";
-#      };
-#      version = "7.1.5";
-#      modDirVersion = "7.1.5";
-#      };
-#  });
+    #    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_7_1.override {
+    #    argsOverride = rec {
+    #      src = pkgs.fetchurl {
+    #            url = "mirror://kernel/linux/kernel/v7.x/linux-${version}.tar.xz";
+    #            sha256 = "sha256-IqAZazy83zTcJ7d1YfTQQFhf00R+3JqzUxoax54wQec=";
+    #      };
+    #      version = "7.1.5";
+    #      modDirVersion = "7.1.5";
+    #      };
+    #  });
 
     kernel.sysctl = {
       "fs.inotify.max_user_watches" = "1048576";
@@ -31,7 +37,6 @@
       useOSProber = true;
     };
   };
- 
 
   # For x11
   services.xserver.enable = true;
@@ -41,7 +46,7 @@
 
   # Networking
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [ 
+  networking.firewall.allowedTCPPorts = [
     2234 # Soulseek
   ];
 
@@ -75,9 +80,12 @@
     uid = 3001;
     shell = pkgs.fish;
     description = "Abee user";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxS+EO9has3Kcuo+O+kNRroyWMjV+RUfOATTzEmmVzR"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxS+EO9has3Kcuo+O+kNRroyWMjV+RUfOATTzEmmVzR"
     ];
   };
 
@@ -96,7 +104,10 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
     git
     wget
@@ -112,25 +123,42 @@
     libimobiledevice
 
     # configure python
-    (python3.withPackages (python-pkgs: with python-pkgs; [
+    (python3.withPackages (
+      python-pkgs: with python-pkgs; [
 
-    ]))
+      ]
+    ))
   ];
 
-  fonts.packages = with pkgs; [
-    fira-code
-    fira-code-symbols
-    nerd-fonts.fira-code
-    # For electron apps
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-  ];
+  fonts = {
+    enableDefaultPackages = true;
+
+    packages = with pkgs; [
+      fira-code
+      fira-code-symbols
+      nerd-fonts.fira-code
+      # For electron apps
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        sansSerif = [ "Noto Sans" ];
+        serif = [ "Noto Serif" ];
+        monospace = [ "DejaVu Sans Mono" ];
+      };
+    };
+  };
 
   # List services that you want to enable:
   services.resolved.enable = true;
 
-  services.udev.packages = [ pkgs.via pkgs.qmk-udev-rules ];
+  services.udev.packages = [
+    pkgs.via
+    pkgs.qmk-udev-rules
+  ];
 
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -176,5 +204,24 @@
 
   # For iPhone
   services.usbmuxd.enable = true;
+
+  # To be able to run normal binaries not packaged in nixpkgs
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    icu
+    libx11
+    libice
+    libsm
+    libxi
+    libxcursor
+    libxrandr
+    libxext
+    fontconfig
+    libGL
+  ];
+
+  systemd.tmpfiles.rules = [
+    "L+ /usr/share/fonts - - - - /home/abee/.nix-profile/share/fonts"
+  ];
 
 }

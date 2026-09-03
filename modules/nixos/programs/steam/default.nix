@@ -22,6 +22,6 @@
     ];
 
     extraPackages = with pkgs; [ hidapi ];
-    extest.enable = true;  # fixed the cursor issue
+    extest.enable = true; # fixed the cursor issue
   };
 }

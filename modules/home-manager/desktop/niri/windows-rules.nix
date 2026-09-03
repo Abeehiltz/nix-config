@@ -22,6 +22,9 @@
           fixed = 920;
         };
       }
+      # ----- #
+      # STEAM #
+      # ----- #
       {
         matches = [
           {
@@ -60,11 +63,16 @@
       {
         matches = [
           {
-            app-id = "steam";
+            app-id = "steam.*";
             title = "^Steam$";
           }
         ];
         open-on-workspace = "steam";
+      }
+      # Discord
+      {
+        matches = [ { app-id = "vesktop"; } ];
+        open-on-workspace = "discord";
       }
     ];
 

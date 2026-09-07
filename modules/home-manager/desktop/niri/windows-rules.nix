@@ -64,8 +64,8 @@
         matches = [
           {
             app-id = "steam.*";
-            title = "^Steam$";
           }
+
         ];
         open-on-workspace = "steam";
       }

@@ -6,8 +6,8 @@
 }:
 {
   imports = [
-#    ../terminal/zsh
-#    ../terminal/ohmyposh
+    #    ../terminal/zsh
+    #    ../terminal/ohmyposh
     ../terminal/fish
     ../terminal/starship
     ../terminal/zoxide
@@ -24,7 +24,6 @@
     ../programs/feh
   ];
 
-
   home = {
     username = username;
     homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
@@ -36,10 +35,10 @@
 
   home.packages = with pkgs; [
     vim
-    eza    # Modern ls
-    fd     # Find alternative
+    eza # Modern ls
+    fd # Find alternative
     zoxide # Better cd
-    ouch   # unified compression helper
+    ouch # unified compression helper
     btop
     dysk
     lazygit
@@ -51,7 +50,7 @@
     dnslookup
     ansible
     inetutils
-
+    imagemagick
 
     # Applications
     lact
@@ -69,7 +68,6 @@
     qbittorrent
     iloader
 
-
     # Kubernetes
     talosctl
     kompose
@@ -85,6 +83,5 @@
     # affinity-nix https://github.com/mrshmllow/affinity-nix
     #inputs.affinity-nix.packages.x86_64-linux.v3
   ];
-
 
 }

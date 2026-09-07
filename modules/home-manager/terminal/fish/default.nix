@@ -6,24 +6,23 @@
   # Fish setup
   programs.fish = {
     enable = true;
-    
+
     # Because home.sessionPath in common doesn't work for fish apparently
     shellInit = ''
       fish_add_path $HOME/.local/bin
     '';
 
-
     shellAliases = {
       # eza aliases
-      ls   = "eza --icons=always";
-      ll   = "eza -lg --icons=always";
-      lls  = "eza -lg -s newest --icons=always";
-      la   = "eza -lag --icons=always";
-      las  = "eza -lag -s newest --icons=always";
-      lt   = "eza -lTg --icons=always";
-      lt2  = "eza -lTg --level=2 --icons=always";
-      lt3  = "eza -lTg --level=3 --icons=always";
-      lt4  = "eza -lTg --level=4 --icons=always";
+      ls = "eza --icons=always";
+      ll = "eza -lg --icons=always";
+      lls = "eza -lg -s newest --icons=always";
+      la = "eza -lag --icons=always";
+      las = "eza -lag -s newest --icons=always";
+      lt = "eza -lTg --icons=always";
+      lt2 = "eza -lTg --level=2 --icons=always";
+      lt3 = "eza -lTg --level=3 --icons=always";
+      lt4 = "eza -lTg --level=4 --icons=always";
       lta2 = "eza -lTag --level=2 --icons=always";
       lta3 = "eza -lTag --level=3 --icons=always";
       lta4 = "eza -lTag --level=4 --icons=always";
@@ -34,7 +33,7 @@
       # git
       lg = "lazygit";
 
-      ## FFXIV 
+      ## FFXIV
       act = "aetherless-meter";
     };
 
@@ -42,11 +41,10 @@
     interactiveShellInit = ''
       # Enable vi mode (optional)
       fish_vi_key_bindings
-      
+
       # Set greeting (optional - remove to disable)
       # set fish_greeting
     '';
-
 
     functions = {
       # Cleans up the local Nix install: keeps the 5 most recent profile
@@ -79,6 +77,14 @@
         echo "✅ Done."
         du -sh /nix/store 2>/dev/null
       '';
+
+      rotimg = ''
+        if test (count $argv) -eq 0
+          echo "Usage: rotimg <image> [more images...]"
+          return 1
+        end
+        mogrify -rotate 90 $argv
+      '';
     };
 
   };
@@ -91,7 +97,6 @@
     fi
     ln -sf "$HOME/.history" "$HOME/.local/share/fish/fish_history"
   '';
-
 
   programs.man.generateCaches = false;
 

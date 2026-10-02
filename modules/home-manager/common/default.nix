@@ -67,6 +67,10 @@
     vintagestory
     qbittorrent
     iloader
+    gimp
+    krita
+    blender
+    lutris
 
     # Kubernetes
     talosctl

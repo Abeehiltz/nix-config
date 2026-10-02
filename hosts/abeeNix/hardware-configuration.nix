@@ -25,6 +25,7 @@
   boot.kernelModules = [
     "kvm-intel"
     "ntsync"
+    "uinput"
   ];
   boot.kernelParams = [
     "irqpoll"
@@ -116,4 +117,7 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.amdgpu.overdrive.enable = true;
   hardware.steam-hardware.enable = true; # For steam controller
+  hardware.opentabletdriver.enable = true;
+  hardware.uinput.enable = true;
+
 }

@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   programs.yazi = {
     enable = true;
@@ -17,7 +17,11 @@
           desc = "Maximize or restore the preview pane";
         }
         {
-          on = [ "c" "a" "a" ];
+          on = [
+            "c"
+            "a"
+            "a"
+          ];
           run = "plugin compress";
           desc = "Archive selected files";
         }
@@ -27,17 +31,18 @@
       preview = {
         max_width = 3840;
         max_height = 2160;
+        cache_dir = "~/.cache/yazi";
       };
 
-opener = {
-  feh-fullscreen = [
-    {
-      run = ''feh -F -Z --start-at %s1 %d1'';
-      desc = "Open in feh (fullscreen)";
-      orphan = true;
-    }
-  ];
-};
+      opener = {
+        feh-fullscreen = [
+          {
+            run = "feh -F -Z --start-at %s1 %d1";
+            desc = "Open in feh (fullscreen)";
+            orphan = true;
+          }
+        ];
+      };
       open.prepend_rules = [
         {
           mime = "image/*";

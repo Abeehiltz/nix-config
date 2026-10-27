@@ -43,11 +43,13 @@
     dysk
     lazygit
     jq
+    yq
     unzip
     zip
     cliphist
     openvpn
-    dnslookup
+    dnsutils
+    openssl
     ansible
     inetutils
     imagemagick
@@ -63,7 +65,7 @@
     #xivlauncher
     nicotine-plus
     brave # When I need chromium based browser
-    outputs.packages.x86_64-linux.raphael-rs
+    #    outputs.packages.x86_64-linux.raphael-rs
     vintagestory
     qbittorrent
     iloader
@@ -71,6 +73,7 @@
     krita
     blender
     lutris
+    telegram-desktop
 
     # Kubernetes
     talosctl

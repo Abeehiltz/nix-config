@@ -52,10 +52,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    millennium = {
-      url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-      #url = "github:SteamClientHomebrew/Millennium/next?dir=packages/nix";
-    };
     dw-proton.url = "github:imaviso/dwproton-flake";
     nixos-xivlauncher-rb = {
       url = "github:The1Penguin/nixos-xivlauncher-rb";
@@ -72,7 +68,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs =
@@ -85,7 +80,6 @@
       nvf,
       dw-proton,
       nixos-xivlauncher-rb,
-      llm-agents,
       ...
     }@inputs:
     let

@@ -1,6 +1,5 @@
 { pkgs, inputs, ... }:
 {
-  nixpkgs.overlays = [ inputs.millennium.overlays.default ];
 
   # Add gamescope
   programs.gamescope = {
@@ -11,7 +10,6 @@
   # Steam gaming platform configuration
   programs.steam = {
     enable = true;
-    package = pkgs.millennium-steam; # millenium customization
     protontricks.enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;

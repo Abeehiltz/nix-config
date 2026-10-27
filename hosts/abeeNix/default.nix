@@ -2,29 +2,28 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ 
+{
   inputs,
   hostname,
   nixosModules,
   ...
-} :
+}:
 {
-  imports = [ 
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      "${nixosModules}/common"
-      "${nixosModules}/desktop/niri"
-      "${nixosModules}/programs/steam"
-      "${nixosModules}/programs/1password"
-      "${nixosModules}/programs/lact"
-      "${nixosModules}/programs/llm-agents"
-      "${nixosModules}/programs/xivlauncher-rb"
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    "${nixosModules}/common"
+    "${nixosModules}/desktop/niri"
+    "${nixosModules}/programs/steam"
+    "${nixosModules}/programs/1password"
+    "${nixosModules}/programs/lact"
+    "${nixosModules}/programs/xivlauncher-rb"
 
-      # Hardware includes
-      inputs.nixos-hardware.nixosModules.common-gpu-amd
-      inputs.nixos-hardware.nixosModules.common-pc-ssd
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
-    ];
+    # Hardware includes
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
+  ];
 
   networking.hostName = hostname; # Define your hostname.
 

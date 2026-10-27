@@ -22,6 +22,7 @@
     ../programs/nvim
     ../programs/beets
     ../programs/feh
+    ../programs/btop
   ];
 
   home = {
@@ -39,7 +40,6 @@
     fd # Find alternative
     zoxide # Better cd
     ouch # unified compression helper
-    btop
     dysk
     lazygit
     jq

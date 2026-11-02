@@ -53,12 +53,14 @@
     ansible
     inetutils
     imagemagick
+    ffmpeg-full
 
     # Applications
     lact
     vesktop
     feishin # Music player
     mpv # media player for feishin
+    cine # Video player
     solaar # logitech mouse
     obsidian
     jellyfin-desktop

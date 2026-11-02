@@ -42,11 +42,22 @@
             orphan = true;
           }
         ];
+        video-opener = [
+          {
+            run = "cine %s1";
+            desc = "Open with Cine";
+            orphan = true;
+          }
+        ];
       };
       open.prepend_rules = [
         {
           mime = "image/*";
           use = "feh-fullscreen";
+        }
+        {
+          mime = "video/*";
+          use = "video-opener";
         }
       ];
     };

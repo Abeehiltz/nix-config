@@ -58,10 +58,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    raphael-rs-src = {
-      url = "github:KonaeAkira/raphael-rs";
-      flake = false;
-    };
+    #    raphael-rs-src = {
+    #      url = "github:KonaeAkira/raphael-rs";
+    #      flake = false;
+    #    };
 
     nix-yazi-plugins = {
       url = "github:lordkekz/nix-yazi-plugins";
@@ -157,9 +157,9 @@
 
     in
     {
-      packages.x86_64-linux.raphael-rs = (pkgsFor "x86_64-linux").callPackage ./pkgs/raphael-rs {
-        src = inputs.raphael-rs-src;
-      };
+      # packages.x86_64-linux.raphael-rs = (pkgsFor "x86_64-linux").callPackage ./pkgs/raphael-rs {
+      #   src = inputs.raphael-rs-src;
+      # };
       nixosConfigurations = {
         abeeNix = mkNixosConfiguration "abeeNix" "abee";
       };

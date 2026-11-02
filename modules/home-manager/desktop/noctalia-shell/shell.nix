@@ -6,6 +6,7 @@
     setup_wizard_enabled = false;
 
     greeter_sync.auto_sync = true;
+    external_ip_enabled = true;
 
     panel = {
       open_near_click_control_center = true;

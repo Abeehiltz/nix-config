@@ -1,5 +1,6 @@
 {
   outputs,
+  inputs,
   username,
   pkgs,
   ...
@@ -32,6 +33,12 @@
       EDITOR = "vim";
     };
     sessionPath = [ "$HOME/.local/bin" ];
+
+  };
+  xdg.userDirs = {
+    setSessionVariables = false;
+    enable = true;
+    createDirectories = true; # creates the folders if they don't exist
   };
 
   home.packages = with pkgs; [
@@ -68,6 +75,8 @@
     nicotine-plus
     brave # When I need chromium based browser
     #    outputs.packages.x86_64-linux.raphael-rs
+    inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default
+
     vintagestory
     qbittorrent
     iloader

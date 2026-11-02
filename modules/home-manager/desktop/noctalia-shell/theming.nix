@@ -25,6 +25,8 @@
         "steam"
         "lazygit"
         "yazi"
+        "strata"
+        "obs"
       ];
     };
   };

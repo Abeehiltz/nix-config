@@ -155,6 +155,10 @@
   # List services that you want to enable:
   services.resolved.enable = true;
 
+  # For strata file explorer to manage network shares and disk management
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
+
   services.udev.packages = [
     pkgs.via
     pkgs.qmk-udev-rules

@@ -58,16 +58,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #    raphael-rs-src = {
-    #      url = "github:KonaeAkira/raphael-rs";
-    #      flake = false;
-    #    };
-
     nix-yazi-plugins = {
       url = "github:lordkekz/nix-yazi-plugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # File explorer Strata
+    strata.url = "github:lgse/strata";
+
+    #    raphael-rs-src = {
+    #      url = "github:KonaeAkira/raphael-rs";
+    #      flake = false;
+    #    };
   };
 
   outputs =

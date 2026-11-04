@@ -24,6 +24,8 @@
     ../programs/beets
     ../programs/feh
     ../programs/btop
+
+    ../services/rsync-backups
   ];
 
   home = {

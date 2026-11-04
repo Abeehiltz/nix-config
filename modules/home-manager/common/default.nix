@@ -53,6 +53,7 @@
     yq
     unzip
     zip
+    fzf
     cliphist
     openvpn
     dnsutils
@@ -64,6 +65,7 @@
 
     # Applications
     lact
+    obs-studio
     vesktop
     feishin # Music player
     mpv # media player for feishin

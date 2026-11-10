@@ -5,10 +5,10 @@
     Service = {
       Type = "oneshot";
       ExecStart = "${pkgs.writeShellScript "rsync-backup-ffxiv" ''
-        ${pkgs.rsync}/bin/rsync -a \
-          "$HOME/Documents/FFXIV" /mnt/storage/backup/ffxiv --exclude 'SundouleiaCache' --exclude 'Exported_mods' --exclude 'IINACT' --exclude 'Lightless' --exclude 'PlayerSync'
-        ${pkgs.rsync}/bin/rsync -a \
-          "$HOME/Pictures/FFXIV" /mnt/storage/Images/FFXIV --exclude 'old'
+        ${pkgs.rsync}/bin/rsync -a --no-group \
+          "$HOME/Documents/FFXIV/" /mnt/storage/backup/ffxiv/ --exclude 'SundouleiaCache' --exclude 'Exported_mods' --exclude 'IINACT' --exclude 'Lightless' --exclude 'PlayerSync'
+        ${pkgs.rsync}/bin/rsync -a --no-group \
+          "$HOME/Pictures/FFXIV/" /mnt/storage/Images/FFXIV/ --exclude 'old'
       ''}";
     };
   };

@@ -64,6 +64,7 @@
     inetutils
     imagemagick
     ffmpeg-full
+    unrar
 
     # Applications
     lact

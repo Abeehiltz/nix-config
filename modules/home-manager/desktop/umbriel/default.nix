@@ -11,8 +11,8 @@ in
   programs.umbriel.enable = true;
   imports = [
     #    ./settings.nix
-    #    ./keybinds.nix
-    #    ./autostart.nix
+    ./keybinds.nix
+    ./autostart.nix
     #    ./windows-rules.nix
     #    ./workspaces.nix
   ];

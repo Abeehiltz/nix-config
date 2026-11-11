@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     "${nixosModules}/common"
     "${nixosModules}/desktop/niri"
+    "${nixosModules}/desktop/umbriel"
     "${nixosModules}/programs/steam"
     "${nixosModules}/programs/1password"
     "${nixosModules}/programs/lact"

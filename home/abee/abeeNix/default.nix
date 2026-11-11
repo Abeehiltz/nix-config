@@ -1,8 +1,16 @@
-{ config, pkgs, username, hostname, hmModules, ... }:
+{
+  config,
+  pkgs,
+  username,
+  hostname,
+  hmModules,
+  ...
+}:
 {
   imports = [
     "${hmModules}/common"
     "${hmModules}/desktop/niri"
+    "${hmModules}/desktop/umbriel"
     "${hmModules}/desktop/noctalia-shell"
   ];
 
@@ -17,6 +25,5 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
- 
 
 }

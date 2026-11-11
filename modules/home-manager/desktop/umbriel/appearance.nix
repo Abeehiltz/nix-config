@@ -14,5 +14,12 @@
       contrast = 0.9;
       saturation = 1.1;
     };
+
+    shadow = {
+      enabled = true;
+      softness = 10;
+      offset_x = 2;
+      offset_y = 2;
+    };
   };
 }

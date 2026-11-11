@@ -3,13 +3,14 @@
     enable = true;
 
     settings = {
+      general.xwayland_primary_output = "Microstep MPG322UX OLED 0x01010101";
       input = {
         keyboard.layout = "us";
         mouse.accel_profile = "flat";
       };
       output = {
         "Microstep MPG322UX OLED 0x01010101" = {
-          mode = "3840x2160@199.999";
+          mode = "3840x2160@119.999";
           scale = 1.5;
           position = [
             2560
@@ -17,7 +18,7 @@
           ];
         };
         "Acer Technologies XB271HU A #ASO7TBPV1Ovd" = {
-          mode = "2560x1440@59.951";
+          mode = "2560x1440@119.998";
           scale = 1;
           position = [
             0

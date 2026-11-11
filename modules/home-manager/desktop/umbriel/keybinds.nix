@@ -105,19 +105,21 @@
     "Mod+WheelDown" = "window-focus-right";
 
     # Focus and movement
-    "Mod+Left" = "window-focus-left";
-    "Mod+Down" = "window-focus-down";
-    "Mod+Up" = "window-focus-up";
-    "Mod+Right" = "window-focus-right";
+    "Mod+Left" = "window-focus-or-output-left";
+    "Mod+Down" = "window-focus-or-workspace-down";
+    "Mod+Up" = "window-focus-or-workspace-up";
+    "Mod+Right" = "window-focus-or-output-right";
     # "Mod+H" = "window-focus-left";
     # "Mod+J" = "window-focus-down";
     # "Mod+K" = "window-focus-up";
     # "Mod+L" = "window-focus-right";
     "Mod+F1" = "window-focus-next";
-    "Mod+Shift+Left" = "column-move-left";
-    "Mod+Shift+Down" = "window-move-down";
-    "Mod+Shift+Up" = "window-move-up";
-    "Mod+Shift+Right" = "column-move-right";
+    "Mod+Shift+Left" = "window-move-or-output-left";
+    "Mod+Shift+Down" = "window-move-or-workspace-down";
+    "Mod+Shift+Up" = "window-move-or-workspace-up";
+    "Mod+Shift+Right" = "window-move-or-output-right";
+    "Mod+Tab" = "workspace-next";
+    "Mod+Shift+Tab" = "workspace-previous";
 
     # Workspaces
     # Move the whole workspace, retaining its name, layout, and windows.
@@ -153,7 +155,6 @@
       action = "window-restore-from-scratchpad";
       repeat = false;
     };
-    "Mod+Tab" = "scratchpad-focus-next";
 
     # Screenshot settings
     "Mod+Shift+S" = "spawn noctalia msg screenshot-region";

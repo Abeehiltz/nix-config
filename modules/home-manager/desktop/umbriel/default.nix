@@ -15,28 +15,35 @@ in
     ./keybinds.nix
     ./autostart.nix
     ./windows-rules.nix
-    #    ./workspaces.nix
+    ./workspaces.nix
   ];
 
-  #  xdg.portal = {
-  #    enable = true;
-  #    xdgOpenUsePortal = true;
-  #    extraPortals = [
-  #      strata.fileChooserPortal
-  #    ];
-  #          config.niri = {
-  #            default = [
-  #              "strata"
-  #              "gnome"
-  #              "gtk"
-  #            ];
-  #      "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
-  #      "org.freedesktop.impl.portal.FileChooser" = "strata";
-  #    };
-  #        config.common.default = [
-  #          "strata"
-  #          "gnome"
-  #          "gtk"
-  #        ];
-  #  };
+  programs.umbriel.settings.include.optional.files = [ "~/.config/umbriel/noctalia.toml" ];
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-umbriel
+      strata.fileChooserPortal
+    ];
+    config.umbriel.default = [
+      "umbriel"
+      "gtk"
+    ];
+    config.umbriel."org.freedesktop.impl.portal.FileChooser" = "strata";
+    #          config.niri = {
+    #            default = [
+    #              "strata"
+    #              "gnome"
+    #              "gtk"
+    #            ];
+    #      "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+    #    };
+    #        config.common.default = [
+    #          "strata"
+    #          "gnome"
+    #          "gtk"
+    #        ];
+  };
 }

@@ -7,11 +7,63 @@
     {
       match.app_id = "^dev.noctalia.Noctalia$";
       default_floating = true;
-      default_size = [
-        1020
-        900
-      ];
+      default_floating_size = {
+        width = 0.5;
+        height = 0.5;
+      };
     }
+
+    # ----- #
+    # STEAM #
+    # ----- #
+    {
+      match = {
+        app_id = "steam";
+        title = ''^notificationtoasts_\d+_desktop$'';
+      };
+      default_focused = false;
+      default_position = {
+        x = 10;
+        y = 10;
+        anchor = "bottom_right";
+      };
+    }
+    # Game opening weird new windows, now open as floating windows instead.
+    {
+      match = {
+        app_id = "^steam_app_.*$";
+        title = "Form";
+      };
+
+      default_focused = false;
+    }
+    {
+      match = {
+        app_id = "steam";
+        title = "Steam Big Picture Mode";
+      };
+
+      default_focused = true;
+      default_fullscreen = true;
+      default_workspace = "steam";
+    }
+    {
+      match = {
+        app_id = "steam.*";
+      }
+
+      ;
+      default_workspace = "steam";
+    }
+    # Discord
+    {
+      match = {
+        app_id = "vesktop";
+      };
+      default_workspace = "discord";
+      default_maximize = true;
+    }
+
   ];
 
   programs.umbriel.settings.layer_rule = [

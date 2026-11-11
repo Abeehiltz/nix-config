@@ -14,6 +14,7 @@
         "gt4"
         "qt"
         "kitty"
+        "umbriel"
       ];
 
       community_ids = [

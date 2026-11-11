@@ -1,7 +1,7 @@
 {
   programs.noctalia.settings = {
     bar.main = {
-      background_opacity = 0.95;
+      background_opacity = 0.75;
       border_width = 1;
       margin_edge = 5;
       margin_ends = 15;

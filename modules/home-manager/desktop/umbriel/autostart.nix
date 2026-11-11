@@ -1,4 +1,3 @@
-{ }:
 {
   programs.umbriel.settings.general = {
     autostart = [

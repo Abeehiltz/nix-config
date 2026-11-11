@@ -8,12 +8,13 @@ let
   strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
-  programs.umbriel.enable = true;
   imports = [
-    #    ./settings.nix
+    inputs.umbriel.homeModules.default
+    ./appearance.nix
+    ./settings.nix
     ./keybinds.nix
     ./autostart.nix
-    #    ./windows-rules.nix
+    ./windows-rules.nix
     #    ./workspaces.nix
   ];
 

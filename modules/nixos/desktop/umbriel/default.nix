@@ -12,6 +12,7 @@
 
   services.displayManager.noctalia-greeter = {
     enable = true;
+    passwordless-sync-users = [ "abee" ];
     settings = {
       cursor = {
         theme = "Bibata-Modern-Ice";
@@ -24,6 +25,7 @@
   environment.systemPackages = with pkgs; [
     kitty
     wl-clipboard
+    xwayland
   ];
 
 }

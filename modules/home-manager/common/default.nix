@@ -83,7 +83,7 @@
 
     vintagestory
     qbittorrent
-    iloader
+    #iloader
     gimp
     krita
     blender

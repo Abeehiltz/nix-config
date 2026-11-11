@@ -19,6 +19,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Umbriel
+    umbriel.url = "github:noctalia-dev/umbriel";
+
     # Noctalia shelll
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";

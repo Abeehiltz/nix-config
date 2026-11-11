@@ -78,7 +78,6 @@
     jellyfin-desktop
     #xivlauncher
     nicotine-plus
-    brave # When I need chromium based browser
     #    outputs.packages.x86_64-linux.raphael-rs
     inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default
 

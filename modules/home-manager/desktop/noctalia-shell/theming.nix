@@ -19,7 +19,7 @@
 
       community_ids = [
         "feishin"
-        "zen-browser"
+        #        "zen-browser" # Using transparency instead
         "discord"
         "neovim"
         "obsidian"

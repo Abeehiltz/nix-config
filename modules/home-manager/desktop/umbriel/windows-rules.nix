@@ -63,6 +63,20 @@
       default_workspace = "discord";
       default_maximize = true;
     }
+    # Picture in Picture
+    {
+      match.title = "Picture-in-Picture";
+      default_floating = true;
+      default_floating_size = {
+        width = 0.33;
+        height = 0.33;
+      };
+      default_position = {
+        x = 10;
+        y = 10;
+        anchor = "top_right";
+      };
+    }
 
   ];
 

@@ -118,8 +118,9 @@
     "Mod+Shift+Down" = "window-move-or-workspace-down";
     "Mod+Shift+Up" = "window-move-or-workspace-up";
     "Mod+Shift+Right" = "window-move-or-output-right";
-    "Mod+Tab" = "workspace-next";
-    "Mod+Shift+Tab" = "workspace-previous";
+    "Mod+Ctrl+Shift+Left" = "window-move-to-output-left";
+    "Mod+Ctrl+Shift+Right" = "window-move-to-output-right";
+    "Mod+Tab" = "window-focus-last";
 
     # Workspaces
     # Move the whole workspace, retaining its name, layout, and windows.

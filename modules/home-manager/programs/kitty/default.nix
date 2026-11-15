@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   ...
 }:
@@ -19,5 +18,7 @@
     extraConfig = ''
       include themes/noctalia.conf
     '';
+
   };
+
 }

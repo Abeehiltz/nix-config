@@ -85,6 +85,14 @@
         end
         mogrify -rotate 90 $argv
       '';
+
+      ssh = ''
+        if set -q KITTY_WINDOW_ID; and command -q kitten
+          kitten ssh $argv
+        else
+          command ssh $argv
+        end
+      '';
     };
 
   };

@@ -52,7 +52,7 @@
     dysk
     lazygit
     jq
-    yq
+    yq-go
     unzip
     zip
     fzf
@@ -76,10 +76,9 @@
     solaar # logitech mouse
     obsidian
     jellyfin-desktop
-    #xivlauncher
     nicotine-plus
-    #    outputs.packages.x86_64-linux.raphael-rs
     inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default
+    winbox
 
     vintagestory
     qbittorrent

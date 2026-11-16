@@ -7,6 +7,8 @@
       input = {
         keyboard.layout = "us";
         mouse.accel_profile = "flat";
+        cursor.theme = "Phoebe";
+        cursor.size = 36;
       };
       output = {
         "Microstep MPG322UX OLED 0x01010101" = {

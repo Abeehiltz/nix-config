@@ -31,7 +31,7 @@ in
       "umbriel"
       "gtk"
     ];
-    config.umbriel."org.freedesktop.impl.portal.FileChooser" = "strata";
+
     #          config.niri = {
     #            default = [
     #              "strata"
@@ -45,5 +45,11 @@ in
     #          "gnome"
     #          "gtk"
     #        ];
+  };
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = [ "kitty.desktop" ];
+    };
   };
 }

@@ -1,36 +1,34 @@
 {
-  description = "ani2xcur - install Windows animated cursors on X11/Wayland";
+  lib,
+  rustPlatform,
+  installShellFiles,
+  stdenv,
+  src,
+}:
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    ani2xcur-src = {
-      url = "github:nicdgonzalez/ani2xcur";
-      flake = false;
-    };
+rustPlatform.buildRustPackage {
+  pname = "ani2xcur";
+  version = "0.1.3";
+  inherit src;
+
+  cargoLock = {
+    lockFile = "${src}/Cargo.lock";
+    allowBuiltinFetchGit = true;
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      ani2xcur-src,
-    }:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      packages.${system}.default = pkgs.rustPlatform.buildRustPackage {
-        pname = "ani2xcur";
-        version = "0.1.3";
-        src = ani2xcur-src;
-        cargoLock.lockFile = "${ani2xcur-src}/Cargo.lock";
-        meta.mainProgram = "ani2xcur";
-      };
+  nativeBuildInputs = [ installShellFiles ];
 
-      apps.${system}.default = {
-        type = "app";
-        program = "${self.packages.${system}.default}/bin/ani2xcur";
-      };
-    };
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd ani2xcur \
+      --bash <($out/bin/ani2xcur completions bash) \
+      --zsh <($out/bin/ani2xcur completions zsh) \
+      --fish <($out/bin/ani2xcur completions fish)
+  '';
+
+  meta = {
+    description = "Install Windows animated cursor schemes on Unix-like systems";
+    homepage = "https://github.com/nicdgonzalez/ani2xcur";
+    mainProgram = "ani2xcur";
+    platforms = lib.platforms.linux;
+  };
 }

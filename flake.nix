@@ -34,6 +34,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Noctalia theming to edit it manually in theming.nix
+    noctalia-templates = {
+      url = "github:noctalia-dev/community-templates";
+      flake = false;
+    };
+
     # Zen browser
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -66,6 +72,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+
     # File explorer Strata
     strata.url = "github:lgse/strata";
 
@@ -73,6 +81,10 @@
     #      url = "github:KonaeAkira/raphael-rs";
     #      flake = false;
     #    };
+    ani2xcur-src = {
+      url = "github:nicdgonzalez/ani2xcur";
+      flake = false;
+    };
   };
 
   outputs =
@@ -85,6 +97,7 @@
       nvf,
       dw-proton,
       nixos-xivlauncher-rb,
+      millennium,
       ...
     }@inputs:
     let
@@ -165,6 +178,10 @@
       # packages.x86_64-linux.raphael-rs = (pkgsFor "x86_64-linux").callPackage ./pkgs/raphael-rs {
       #   src = inputs.raphael-rs-src;
       # };
+      packages.x86_64-linux.ani2xcur = (pkgsFor "x86_64-linux").callPackage ./pkgs/ani2xcur {
+        src = inputs.ani2xcur-src;
+      };
+
       nixosConfigurations = {
         abeeNix = mkNixosConfiguration "abeeNix" "abee";
       };

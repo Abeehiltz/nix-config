@@ -3,7 +3,7 @@
 
   stylix = {
     enable = true;
-    #polarity = "light";
+    polarity = "dark";
 
     # Rosé Pine Moon from the base16-schemes package
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";

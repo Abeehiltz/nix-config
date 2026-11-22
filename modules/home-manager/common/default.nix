@@ -14,6 +14,12 @@
     ../terminal/zoxide
     ../terminal/fastfetch
     ../terminal/ssh
+    ../terminal/eza
+    ../terminal/fd
+    ../terminal/fzf
+    ../terminal/jq
+    ../terminal/k9s
+    ../terminal/lazygit
 
     ../programs/kitty
     ../programs/git
@@ -26,8 +32,12 @@
     ../programs/btop
     ../programs/luciole
     ../programs/vesktop
+    ../programs/obs-studio
+    ../programs/obsidian
+    ../programs/mpv
 
     ../services/rsync-backups
+    ../services/cliphist
 
     ../theming/stylix
   ];
@@ -48,19 +58,11 @@
   };
 
   home.packages = with pkgs; [
-    vim
-    eza # Modern ls
-    fd # Find alternative
-    zoxide # Better cd
     ouch # unified compression helper
     dysk
-    lazygit
-    jq
     yq-go
     unzip
     zip
-    fzf
-    cliphist
     openvpn
     dnsutils
     openssl
@@ -72,12 +74,9 @@
 
     # Applications
     lact
-    obs-studio
     feishin # Music player
-    mpv # media player for feishin
     cine # Video player
     solaar # logitech mouse
-    obsidian
     jellyfin-desktop
     nicotine-plus
     #inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default

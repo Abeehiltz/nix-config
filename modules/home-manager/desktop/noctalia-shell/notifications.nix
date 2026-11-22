@@ -1,7 +1,7 @@
 {
   programs.noctalia.settings = {
     osd = {
-      background_opacity = 0.95;
+      #background_opacity = 0.95;
 
       # Which OSD popup kinds (volume/brightness/etc.) are enabled.
       kinds = {
@@ -14,7 +14,7 @@
       };
     };
     notification = {
-      background_opacity = 0.95;
+      #background_opacity = 0.95;
       filter_order = [ "filter" ];
 
       filter.filter = {

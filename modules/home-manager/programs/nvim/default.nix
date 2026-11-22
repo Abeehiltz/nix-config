@@ -26,7 +26,7 @@
         cursorline = true;
       };
 
-      vim.startPlugins = [ pkgs.vimPlugins.base16-nvim ];
+      #      vim.startPlugins = [ pkgs.vimPlugins.base16-nvim ];
 
       vim.extraPackages = [
         pkgs.yamllint
@@ -128,30 +128,6 @@
         }
       ];
 
-      # Load noctalia theme
-      vim.luaConfigRC.noctalia-theme =
-        inputs.nvf.lib.nvim.dag.entryBefore [ "pluginConfigs" "lazyConfigs" "extraPluginConfigs" ]
-          ''
-            vim.o.termguicolors = true
-
-            local matugen_path = vim.fn.expand("~/.config/nvim/lua/matugen.lua")
-
-            local function load_noctalia_theme()
-              local chunk, err = loadfile(matugen_path)
-              if not chunk then
-                return
-              end
-              local ok, mod = pcall(chunk)
-              if ok and mod and mod.setup then
-                mod.setup()
-              end
-            end
-
-            load_noctalia_theme()
-
-            local signal = vim.uv.new_signal()
-            signal:start("sigusr1", vim.schedule_wrap(load_noctalia_theme))
-          '';
     };
   };
 }

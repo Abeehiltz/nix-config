@@ -7,7 +7,7 @@
     ./lockscreen.nix
     ./notifications.nix
     ./services.nix
-    ./theming.nix
+    #    ./theming.nix
     ./shell.nix
   ];
 

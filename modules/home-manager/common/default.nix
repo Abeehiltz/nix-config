@@ -25,8 +25,11 @@
     ../programs/feh
     ../programs/btop
     ../programs/luciole
+    ../programs/vesktop
 
     ../services/rsync-backups
+
+    ../theming/stylix
   ];
 
   home = {
@@ -70,7 +73,6 @@
     # Applications
     lact
     obs-studio
-    vesktop
     feishin # Music player
     mpv # media player for feishin
     cine # Video player

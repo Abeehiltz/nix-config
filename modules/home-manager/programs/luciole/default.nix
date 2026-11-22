@@ -8,7 +8,7 @@
       browser = {
         view_mode = "list";
         show_hidden = true;
-        background_opacity = 0.8;
+        background_opacity = 0.9;
       };
     };
   };

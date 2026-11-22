@@ -130,6 +130,7 @@
             themeFolder = ./theming;
           };
           modules = [
+            stylix.homeModules.stylix
             ./home/${username}/${hostname}
           ];
         };

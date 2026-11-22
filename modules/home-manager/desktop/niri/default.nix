@@ -5,7 +5,7 @@
   ...
 }:
 let
-  strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  #strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   imports = [
@@ -21,22 +21,22 @@ in
     enable = true;
     xdgOpenUsePortal = true;
     extraPortals = [
-      strata.fileChooserPortal
+      #    strata.fileChooserPortal
       pkgs.xdg-desktop-portal-wlr
     ];
     config.niri = {
       default = [
-        "strata"
+        #      "strata"
         "gnome"
         "gtk"
       ];
       "org.freedesktop.impl.portal.Access" = "gtk";
       "org.freedesktop.impl.portal.Notification" = "gtk";
       "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
-      "org.freedesktop.impl.portal.FileChooser" = "strata";
+      #    "org.freedesktop.impl.portal.FileChooser" = "strata";
     };
     config.common.default = [
-      "strata"
+      #    "strata"
       "gnome"
       "gtk"
     ];

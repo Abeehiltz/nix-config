@@ -4,9 +4,6 @@
   inputs,
   ...
 }:
-let
-  strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
-in
 {
   imports = [
     inputs.umbriel.homeModules.default
@@ -24,27 +21,24 @@ in
     enable = true;
     xdgOpenUsePortal = true;
     extraPortals = [
+      inputs.luciole.packages.${pkgs.system}.default
       pkgs.xdg-desktop-portal-umbriel
-      strata.fileChooserPortal
     ];
-    config.umbriel.default = [
-      "umbriel"
+    config.umbriel = {
+      default = [
+        "umbriel"
+        "gtk"
+      ];
+      "org.freedesktop.impl.portal.FileChooser" = [
+        "luciole"
+        "gtk"
+      ];
+    };
+    config.common."org.freedesktop.impl.portal.FileChooser" = [
+      "luciole"
       "gtk"
     ];
 
-    #          config.niri = {
-    #            default = [
-    #              "strata"
-    #              "gnome"
-    #              "gtk"
-    #            ];
-    #      "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
-    #    };
-    #        config.common.default = [
-    #          "strata"
-    #          "gnome"
-    #          "gtk"
-    #        ];
   };
   xdg.mimeApps = {
     enable = true;

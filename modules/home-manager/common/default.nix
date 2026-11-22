@@ -78,7 +78,7 @@
     obsidian
     jellyfin-desktop
     nicotine-plus
-    inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default
+    #inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default
     winbox
     outputs.packages.${pkgs.stdenv.hostPlatform.system}.ani2xcur
     blender

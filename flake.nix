@@ -68,8 +68,13 @@
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # File explorer Strata
-    strata.url = "github:lgse/strata";
+    #strata.url = "github:lgse/strata";
 
     #    raphael-rs-src = {
     #      url = "github:KonaeAkira/raphael-rs";
@@ -92,6 +97,7 @@
       dw-proton,
       nixos-xivlauncher-rb,
       millennium,
+      stylix,
       ...
     }@inputs:
     let

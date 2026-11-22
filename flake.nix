@@ -20,13 +20,10 @@
     };
 
     # Umbriel
-    umbriel.url = "github:noctalia-dev/umbriel";
+    umbriel.url = "github:noctalia-dev/umbriel/cachix";
 
     # Noctalia shelll
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
 
     # Greeter
     noctalia-greeter = {
@@ -34,11 +31,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Noctalia theming to edit it manually in theming.nix
-    noctalia-templates = {
-      url = "github:noctalia-dev/community-templates";
-      flake = false;
-    };
+    # Noctalia filepicker
+    luciole.url = "github:noctalia-dev/luciole/cachix";
 
     # Zen browser
     zen-browser = {

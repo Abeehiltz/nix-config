@@ -24,6 +24,7 @@
     ../programs/beets
     ../programs/feh
     ../programs/btop
+    ../programs/luciole
 
     ../services/rsync-backups
   ];
@@ -80,15 +81,17 @@
     inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default
     winbox
     outputs.packages.${pkgs.stdenv.hostPlatform.system}.ani2xcur
+    blender
 
     vintagestory
     qbittorrent
-    #iloader
+    iloader
     gimp
     krita
     blender
     lutris
     telegram-desktop
+    sgdboop
 
     # Kubernetes
     talosctl

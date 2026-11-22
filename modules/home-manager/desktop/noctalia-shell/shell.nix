@@ -1,7 +1,7 @@
 {
   programs.noctalia.settings.shell = {
     avatar_path = "/home/abee/.avatar";
-    font_family = "FiraCode Nerd Font Mono";
+    font_family = "DejaVu Sans Mono";
     niri_overview_type_to_launch_enabled = true;
     setup_wizard_enabled = false;
     launch_apps_as_systemd_services = true;

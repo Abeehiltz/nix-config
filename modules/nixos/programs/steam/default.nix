@@ -20,7 +20,9 @@
       inputs.dw-proton.packages.${pkgs.stdenv.hostPlatform.system}.dw-proton
     ];
 
-    extraPackages = with pkgs; [ hidapi ];
+    extraPackages = with pkgs; [
+      hidapi
+    ];
     extest.enable = true; # fixed the cursor issue
   };
 }

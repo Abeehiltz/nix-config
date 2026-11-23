@@ -40,7 +40,7 @@
     };
 
     profiles."default".extensions.packages =
-      with inputs.firefox-addons.packages.${pkgs.hostPlatform.system}; [
+      with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
       ];
   };
 }

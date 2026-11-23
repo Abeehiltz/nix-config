@@ -21,7 +21,7 @@
     enable = true;
     xdgOpenUsePortal = true;
     extraPortals = [
-      inputs.luciole.packages.${pkgs.system}.default
+      inputs.luciole.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.xdg-desktop-portal-umbriel
     ];
     config.umbriel = {

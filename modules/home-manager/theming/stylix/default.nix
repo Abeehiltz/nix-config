@@ -9,7 +9,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
 
     opacity = {
-      terminal = 0.9;
+      terminal = 0.95;
       desktop = 0.9;
       applications = 0.9;
       popups = 0.9;

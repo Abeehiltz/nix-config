@@ -1,10 +1,18 @@
 {
+  config,
   outputs,
   inputs,
   username,
   pkgs,
   ...
 }:
+let
+  onePassPath =
+    if pkgs.stdenv.hostPlatform.isDarwin then
+      "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    else
+      "${config.home.homeDirectory}/.1password/agent.sock";
+in
 {
   imports = [
     #    ../terminal/zsh
@@ -44,7 +52,9 @@
 
   home = {
     username = username;
-    homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
+    sessionVariables.SSH_AUTH_SOCK = onePassPath;
+    homeDirectory =
+      if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
     sessionVariables = {
       EDITOR = "vim";
     };
@@ -82,14 +92,13 @@
     #inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default
     winbox
     outputs.packages.${pkgs.stdenv.hostPlatform.system}.ani2xcur
-    blender
 
     vintagestory
     qbittorrent
     iloader
     gimp
     krita
-    blender
+    pkgsRocm.blender
     lutris
     telegram-desktop
     sgdboop

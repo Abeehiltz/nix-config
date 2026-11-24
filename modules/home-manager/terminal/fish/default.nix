@@ -43,6 +43,11 @@
     '';
 
     functions = {
+      # K8s helper function
+      pi-k8s = ''
+        env KUBECONFIG=$HOME/.kube/agent.kubeconfig pi $argv
+      '';
+
       # Cleans up the local Nix install: keeps the 5 most recent profile
       # generations, removes garbage, and hard-links duplicate store files.
       nix-cleanup = ''
@@ -89,6 +94,7 @@
           command ssh $argv
         end
       '';
+
     };
   };
 

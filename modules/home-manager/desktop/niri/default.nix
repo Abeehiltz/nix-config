@@ -3,11 +3,9 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   #strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
-in
-{
+in {
   imports = [
     inputs.niri-flake.homeModules.niri
     ./settings.nix

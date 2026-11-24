@@ -1,5 +1,9 @@
-{ self, config, pkgs, ... }:
 {
+  self,
+  config,
+  pkgs,
+  ...
+}: {
   home.file.".config/fastfetch/fastfetch.png".source = "${self}/theming/fastfetch.png";
 
   programs.fastfetch = {
@@ -90,7 +94,7 @@
           folders = "/";
         }
         "break"
-        { 
+        {
           type = "colors";
           block.range = [8 15];
         }

@@ -2,8 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     inputs.nvf.homeModules.default
   ];
@@ -48,7 +47,7 @@
       vim.diagnostics.nvim-lint = {
         enable = true;
         linters_by_ft = {
-          yaml = [ "yamllint" ];
+          yaml = ["yamllint"];
         };
         lint_after_save = true;
       };
@@ -127,7 +126,6 @@
           desc = "Open parent directory in Oil (floating)";
         }
       ];
-
     };
   };
 }

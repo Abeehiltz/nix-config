@@ -2,8 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
@@ -15,22 +14,22 @@
       command_timeout = 1300;
       scan_timeout = 100;
 
-      format = ''$username$hostname $directory $fill $kubernetes $helm $vcsh $git_branch$git_commit$git_state$git_status $docker_context$package$c$cpp$cmake$golang$guix_shell$java$lua$nodejs$perl$php$purescript$python$terraform$memory_usage$custom$os$battery$time$status 
-$character'';
+      format = ''        $username$hostname $directory $fill $kubernetes $helm $vcsh $git_branch$git_commit$git_state$git_status $docker_context$package$c$cpp$cmake$golang$guix_shell$java$lua$nodejs$perl$php$purescript$python$terraform$memory_usage$custom$os$battery$time$status 
+        $character'';
 
       character = {
         success_symbol = "[❯](bold green) ";
-        vimcmd_symbol  = "[❮](bold blue) ";
-        error_symbol   = "[✗](bold red) ";
+        vimcmd_symbol = "[❮](bold blue) ";
+        error_symbol = "[✗](bold red) ";
       };
 
       cmd_duration = {
         format = " [$duration]($style)";
       };
-  
+
       directory = {
         truncation_length = 8;
-        truncate_to_repo = false; 
+        truncate_to_repo = false;
       };
 
       username = {
@@ -52,7 +51,7 @@ $character'';
       time = {
         format = "  [$time]($style) ";
         time_format = "%F %H:%M:%S";
-        disabled = false; 
+        disabled = false;
       };
 
       status = {

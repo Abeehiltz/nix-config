@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs.niri.settings.workspaces = {
     "steam" = {
       open-on-output = "Microstep MPG322UX OLED 0x01010101";
@@ -9,6 +8,5 @@
       open-on-output = "Acer Technologies XB271HU A #ASO7TBPV1Ovd";
       name = "discord";
     };
-
   };
 }

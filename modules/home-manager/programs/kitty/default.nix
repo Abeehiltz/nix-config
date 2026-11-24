@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   programs.kitty = {
     enable = true;
     enableGitIntegration = true;
@@ -12,7 +8,5 @@
     settings = {
       shell = "${pkgs.fish}/bin/fish";
     };
-
   };
-
 }

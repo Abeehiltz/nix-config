@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.niri = {
     enable = true;
     package = pkgs.niri;
@@ -76,7 +79,6 @@
       debug = {
         honor-xdg-activation-with-invalid-serial = true;
       };
-
     };
   };
 }

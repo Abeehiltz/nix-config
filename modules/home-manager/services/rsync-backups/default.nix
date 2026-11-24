@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   systemd.user.services.rsync-backup-ffxiv = {
     Unit.Description = "Rsync FFXIV folders";
     Service = {
@@ -20,6 +19,6 @@
       Persistent = true; # run missed jobs after boot
       RandomizedDelaySec = "5m";
     };
-    Install.WantedBy = [ "timers.target" ];
+    Install.WantedBy = ["timers.target"];
   };
 }

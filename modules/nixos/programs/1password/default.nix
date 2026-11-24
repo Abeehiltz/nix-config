@@ -1,9 +1,12 @@
-{ pkgs, username, ... }:
 {
+  pkgs,
+  username,
+  ...
+}: {
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = [ "${username}" ];
+    polkitPolicyOwners = ["${username}"];
   };
 
   environment.etc = {
@@ -19,6 +22,5 @@
       ''; # or just "zen" if you use unwrapped package
       mode = "0755";
     };
-  };  
-  
+  };
 }

@@ -1,5 +1,9 @@
-{ lib, pkgs, username, ...}:
 {
+  lib,
+  pkgs,
+  username,
+  ...
+}: {
   programs.git = {
     enable = true;
 
@@ -27,4 +31,3 @@
     };
   };
 }
-

@@ -12,5 +12,4 @@
   ];
 
   programs.noctalia.enable = true;
-
 }

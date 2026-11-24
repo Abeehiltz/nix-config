@@ -5,7 +5,6 @@
   stdenv,
   src,
 }:
-
 rustPlatform.buildRustPackage {
   pname = "ani2xcur";
   version = "0.1.3";
@@ -16,7 +15,7 @@ rustPlatform.buildRustPackage {
     allowBuiltinFetchGit = true;
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [installShellFiles];
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd ani2xcur \

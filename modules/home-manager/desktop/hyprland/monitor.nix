@@ -1,5 +1,4 @@
-{...}:
-{
+{...}: {
   wayland.windowManager.hyprland.settings = {
     monitor = [
       # 2K monitor on the left

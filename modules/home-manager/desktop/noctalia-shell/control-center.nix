@@ -4,15 +4,15 @@
     sidebar_section = "full";
     width = 900;
 
-    calendar = { };
+    calendar = {};
 
     shortcuts = [
-      { type = "notification"; }
-      { type = "nightlight"; }
-      { type = "wallpaper"; }
-      { type = "dark_mode"; }
-      { type = "system"; }
-      { type = "screen-time"; }
+      {type = "notification";}
+      {type = "nightlight";}
+      {type = "wallpaper";}
+      {type = "dark_mode";}
+      {type = "system";}
+      {type = "screen-time";}
     ];
   };
 }

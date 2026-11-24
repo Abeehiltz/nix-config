@@ -1,5 +1,8 @@
-{ username, pkgs, ... }:
 {
+  username,
+  pkgs,
+  ...
+}: {
   imports = [
     ../terminal/fish
     ../terminal/starship
@@ -18,9 +21,11 @@
   home = {
     inherit username;
     homeDirectory =
-      if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
+      if pkgs.stdenv.hostPlatform.isDarwin
+      then "/Users/${username}"
+      else "/home/${username}";
     sessionVariables.EDITOR = "vim";
-    sessionPath = [ "$HOME/.local/bin" ];
+    sessionPath = ["$HOME/.local/bin"];
   };
 
   home.packages = with pkgs; [

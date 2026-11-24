@@ -1,10 +1,9 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   services.llama-cpp = {
-
     enable = true;
     package = pkgs.llama-cpp-vulkan;
     settings = {
-      models-preset = (pkgs.formats.ini { }).generate "models-preset.ini" {
+      models-preset = (pkgs.formats.ini {}).generate "models-preset.ini" {
         "Qwen3-Coder-30B" = {
           hf-repo = "unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M";
           alias = "qwen3-coder";
@@ -18,6 +17,12 @@
           repeat-penalty = 1.05;
         };
       };
+    };
+  };
+  systemd.services.llama-cpp = {
+    environment = {
+      XDG_CACHE_HOME = "/var/cache/llama-cpp";
+      MESA_SHADER_CACHE_DIR = "/var/cache/llama-cpp";
     };
   };
 }

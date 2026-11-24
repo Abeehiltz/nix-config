@@ -3,8 +3,7 @@
   outputs,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     ../programs/kitty
     ../programs/zen-browser

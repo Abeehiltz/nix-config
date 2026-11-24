@@ -23,28 +23,25 @@ let
 
   # Builds one `login_box` widget entry; only geometry/output differ
   # between monitors.
-  mkLoginBox =
-    {
-      output,
-      cx,
-      cy,
-      boxWidth ? 810.0,
-      boxHeight ? 196.0,
-      placementWidth ? 2560.0,
-      placementHeight ? 1440.0,
-    }:
-    {
-      type = "login_box";
-      inherit output cx cy;
-      box_width = boxWidth;
-      box_height = boxHeight;
-      placement_width = placementWidth;
-      placement_height = placementHeight;
-      rotation = 0.0;
-      settings = loginBoxStyle;
-    };
-in
-{
+  mkLoginBox = {
+    output,
+    cx,
+    cy,
+    boxWidth ? 810.0,
+    boxHeight ? 196.0,
+    placementWidth ? 2560.0,
+    placementHeight ? 1440.0,
+  }: {
+    type = "login_box";
+    inherit output cx cy;
+    box_width = boxWidth;
+    box_height = boxHeight;
+    placement_width = placementWidth;
+    placement_height = placementHeight;
+    rotation = 0.0;
+    settings = loginBoxStyle;
+  };
+in {
   programs.noctalia.settings.lockscreen_widgets = {
     enabled = false;
     schema_version = 2;

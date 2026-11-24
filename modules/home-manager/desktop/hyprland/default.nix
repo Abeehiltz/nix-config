@@ -1,6 +1,9 @@
-{inputs, hmModules, ...}
-:
 {
+  inputs,
+  hmModules,
+  ...
+}
+: {
   imports = [
     ./monitor.nix
     ./programs.nix
@@ -15,6 +18,5 @@
     enable = true;
     xwayland.enable = true;
     systemd.enable = false; # because we use UWSM
-
-  }; 
+  };
 }

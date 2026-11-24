@@ -1,6 +1,8 @@
-{ config, inputs, ... }:
 {
-
+  config,
+  inputs,
+  ...
+}: {
   # xdg.configFile."noctalia/templates/discord-midnight-alpha.css".text = patched;
   programs.noctalia.settings.theme = {
     mode = "dark";
@@ -34,11 +36,11 @@
       ];
 
       /*
-        user.discord_midnight_alpha = {
-          input_path = "${config.xdg.configHome}/noctalia/templates/discord-midnight-alpha.css";
-          output_path = "${config.xdg.configHome}/vesktop/themes/noctalia-alpha.theme.css";
+      user.discord_midnight_alpha = {
+        input_path = "${config.xdg.configHome}/noctalia/templates/discord-midnight-alpha.css";
+        output_path = "${config.xdg.configHome}/vesktop/themes/noctalia-alpha.theme.css";
 
-        };
+      };
       */
     };
   };

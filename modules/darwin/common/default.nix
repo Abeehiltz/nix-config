@@ -3,8 +3,7 @@
   pkgs,
   username,
   ...
-}:
-{
+}: {
   # Nixpkgs configuration
   nixpkgs = {
     config = {
@@ -16,7 +15,7 @@
   nix = {
     settings = {
       experimental-features = "nix-command flakes";
-      extra-substituters = [ "https://noctalia.cachix.org" ];
+      extra-substituters = ["https://noctalia.cachix.org"];
       extra-trusted-public-keys = [
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
@@ -32,7 +31,7 @@
     home = "/Users/${username}";
   };
 
-  users.knownUsers = [ "${username}" ];
+  users.knownUsers = ["${username}"];
 
   system.primaryUser = "${username}";
 
@@ -50,9 +49,9 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        sansSerif = [ "Noto Sans" ];
-        serif = [ "Noto Serif" ];
-        monospace = [ "DejaVu Sans Mono" ];
+        sansSerif = ["Noto Sans"];
+        serif = ["Noto Serif"];
+        monospace = ["DejaVu Sans Mono"];
       };
     };
   };
@@ -91,5 +90,4 @@
     inetutils
     terraform
   ];
-
 }

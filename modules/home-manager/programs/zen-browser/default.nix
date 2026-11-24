@@ -2,8 +2,7 @@
   inputs,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     inputs.zen-browser.homeModules.beta
   ];
@@ -36,11 +35,9 @@
       "zen.view.compact.enable-at-startup" = false;
       "zen.view.grey-out-inactive-windows" = false;
       "zen.view.show-newtab-button-top" = false;
-
     };
 
-    profiles."default".extensions.packages =
-      with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
-      ];
+    profiles."default".extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
+    ];
   };
 }

@@ -1,8 +1,7 @@
-{ ... }: {
+{...}: {
   wayland.windowManager.hyprland.settings = {
-
     "$mainMod" = "Super";
-  
+
     bind = [
       # Window/Session actions
       "$mainMod, Q, killactive,"
@@ -13,7 +12,6 @@
 
       # App launcher
       "$mainMod, N, exec, rofi -show drun -run-command 'uwsm app -- {cmd}'"
-
     ];
 
     bindm = [

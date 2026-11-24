@@ -50,9 +50,7 @@
     {
       match = {
         app_id = "steam.*";
-      }
-
-      ;
+      };
       default_workspace = "steam";
     }
     # Discord
@@ -77,7 +75,6 @@
         anchor = "top_right";
       };
     }
-
   ];
 
   programs.umbriel.settings.layer_rule = [

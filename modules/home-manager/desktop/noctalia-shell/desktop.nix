@@ -8,7 +8,6 @@
       directory = "/home/abee/Pictures/Wallpapers";
       fill_mode = "crop";
       transition_on_startup = true;
-
     };
   };
 }

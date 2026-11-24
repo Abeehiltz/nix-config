@@ -1,4 +1,8 @@
-{ pkgs, inputs, themeFolder, ... 
+{
+  pkgs,
+  inputs,
+  themeFolder,
+  ...
 }: let
   vivianBackground = pkgs.stdenv.mkDerivation {
     name = "vivian.mkv";
@@ -9,17 +13,17 @@
     '';
   };
   sddm-theme = inputs.silentSDDM.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-      theme = "silvia"; # select the config of your choice
-      extraBackgrounds = [  vivianBackground ];
-      theme-overrides = {
-            # Available options: https://github.com/uiriansan/SilentSDDM/wiki/Options
-            "LoginScreen" = {
-              background = "${vivianBackground.name}";
-            };
-            "LockScreen" = {
-              background = "${vivianBackground.name}";
-            };
-          };
+    theme = "silvia"; # select the config of your choice
+    extraBackgrounds = [vivianBackground];
+    theme-overrides = {
+      # Available options: https://github.com/uiriansan/SilentSDDM/wiki/Options
+      "LoginScreen" = {
+        background = "${vivianBackground.name}";
+      };
+      "LockScreen" = {
+        background = "${vivianBackground.name}";
+      };
+    };
   };
 in {
   services.displayManager.sddm = {
@@ -28,19 +32,19 @@ in {
     package = pkgs.kdePackages.sddm;
     theme = sddm-theme.pname;
     extraPackages = sddm-theme.propagatedBuildInputs;
-      settings = {
-        # required for styling the virtual keyboard
-        General = {
-          GreeterEnvironment = "QML2_IMPORT_PATH=${sddm-theme}/share/sddm/themes/${sddm-theme.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard";
-          InputMethod = "qtvirtualkeyboard";
-        };
-      }; 
+    settings = {
+      # required for styling the virtual keyboard
+      General = {
+        GreeterEnvironment = "QML2_IMPORT_PATH=${sddm-theme}/share/sddm/themes/${sddm-theme.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard";
+        InputMethod = "qtvirtualkeyboard";
+      };
+    };
   };
 
   services.xserver.enable = true;
   services.xserver.updateDbusEnvironment = true;
 
-  # Enable Hyprland 
+  # Enable Hyprland
   programs.hyprland = {
     enable = true;
     withUWSM = true; # recommended for most users
@@ -52,10 +56,9 @@ in {
   services.gnome.gnome-keyring.enable = true;
   security.polkit.enable = true;
   security.pam.services = {
-    hyprlock = { };
+    hyprlock = {};
     gdm.enableGnomeKeyring = true;
   };
-
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -64,6 +67,4 @@ in {
     pkgs.kitty
     pkgs.kdePackages.qtmultimedia
   ];
-
-
 }

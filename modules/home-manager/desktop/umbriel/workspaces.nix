@@ -7,7 +7,6 @@
     {
       name = "discord";
       output = "Acer Technologies XB271HU A #ASO7TBPV1Ovd";
-
     }
   ];
 }

@@ -19,6 +19,7 @@
     "${nixosModules}/programs/1password"
     "${nixosModules}/programs/lact"
     "${nixosModules}/programs/xivlauncher-rb"
+    "${nixosModules}/services/llama-cpp"
 
     # Hardware includes
     inputs.nixos-hardware.nixosModules.common-gpu-amd

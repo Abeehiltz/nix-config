@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ../terminal/k9s
@@ -15,5 +15,7 @@
     dnsutils
     openssl
     inetutils
+
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
   ];
 }

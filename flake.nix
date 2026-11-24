@@ -84,6 +84,8 @@
       url = "github:nicdgonzalez/ani2xcur";
       flake = false;
     };
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs =

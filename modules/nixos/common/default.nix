@@ -190,7 +190,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;
+    # jack.enable = true; # Deprecated - use pw-jack wrapper instead
   };
 
   # Logitech mouse configuration

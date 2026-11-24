@@ -1,6 +1,8 @@
 ## Overview
 Nix flake managing NixOS (abeeNix) and nix-darwin (BabeeMac) with Home Manager.
 Active desktop: Umbriel. Niri and Hyprland modules exist but are inactive.
+Shell is Fish, use proper commands to match this.
+when using commands taking a path in parameters, make sure you start the path with "./" for current directory.
 
 ## Layout
 - hosts/<host>/: system config per machine (abeeNix = NixOS, BabeeMac = nix-darwin)
@@ -40,10 +42,22 @@ can't be built on abeeNix; don't try
 - Before a non-trivial change, find how nixpkgs or the upstream project does it and follow that shape. pkgs/ is flat, but use nixpkgs by-name conventions for package contents.
 - Don't enable new modules on hosts unprompted.
 - Do not leave this folder unless clearly specified.
+- After editing any .nix file, do a config check and format the file with the format command.
 
-## How to add a module
-Default to Home Manager. Only add a NixOS module for system-level things (services, drivers, privileged programs).
-If it exists in home manager programs.*, do this:
+## How to add an application
+Adding an app does NOT mean creating a module. Decide in this order, stop at the first match:
+
+1. Use the nixos MCP (mcp-nixos) to search Home Manager options for `programs.<name>`
+   and `services.<name>`. Do not guess from memory.
+2. If it exists, create a module (steps below).
+3. If it does NOT exist, do not create a module. Add `pkgs.<name>` to a
+   `home.packages` list in the best-fitting profile in `modules/home-manager/profiles/`
+   (`desktop.nix` for GUI apps, `dev.nix` for dev tools, etc.). One line, no new file.
+4. Only create a custom package in `pkgs/` if it isn't in nixpkgs at all.
+
+Report which path you took and why (e.g. "no programs.foo option, added to desktop.nix").
+
+### Module steps (only when programs.<name> exists)
 1. Choose the category under `modules/home-manager/`:
    - `terminal/`: CLI tools and shell setup
    - `programs/`: GUI apps
@@ -64,9 +78,6 @@ If it exists in home manager programs.*, do this:
    flake's `packages` output (see how `ani2xcur` is wired).
 6. `git add` new files, format, `nix flake check`, then `nixos-rebuild build --flake .#abeeNix`.
 
-If the module is not packaged into program.*, then add it to a home.packages in one of the `modules/home-manager/profiles/`
-
-NixOS modules go under `modules/nixos/{programs,services,desktop}/<name>/default.nix`.
 
 
 ## How to write readme

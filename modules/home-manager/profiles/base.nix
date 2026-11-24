@@ -17,6 +17,7 @@
     ../terminal/nvim
     ../terminal/btop
     ../terminal/fastfetch
+    ../terminal/yazi
   ];
 
   home = {

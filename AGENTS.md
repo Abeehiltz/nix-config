@@ -39,10 +39,11 @@ can't be built on abeeNix; don't try
 - Verification before claiming done: Report what you actually ran. If a build wasn't run, say so.
 - Before a non-trivial change, find how nixpkgs or the upstream project does it and follow that shape. pkgs/ is flat, but use nixpkgs by-name conventions for package contents.
 - Don't enable new modules on hosts unprompted.
+- Do not leave this folder unless clearly specified.
 
 ## How to add a module
 Default to Home Manager. Only add a NixOS module for system-level things (services, drivers, privileged programs).
-
+If it exists in home manager programs.*, do this:
 1. Choose the category under `modules/home-manager/`:
    - `terminal/`: CLI tools and shell setup
    - `programs/`: GUI apps
@@ -62,6 +63,8 @@ Default to Home Manager. Only add a NixOS module for system-level things (servic
 5. Packages not in nixpkgs go in `pkgs/<name>/default.nix` and must be exposed through the
    flake's `packages` output (see how `ani2xcur` is wired).
 6. `git add` new files, format, `nix flake check`, then `nixos-rebuild build --flake .#abeeNix`.
+
+If the module is not packaged into program.*, then add it to a home.packages in one of the `modules/home-manager/profiles/`
 
 NixOS modules go under `modules/nixos/{programs,services,desktop}/<name>/default.nix`.
 

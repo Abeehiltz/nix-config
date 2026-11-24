@@ -1,6 +1,7 @@
+{ username, ... }:
 {
   programs.noctalia.settings.shell = {
-    avatar_path = "/home/abee/.avatar";
+    avatar_path = "/home/${username}/.avatar";
     #    font_family = "DejaVu Sans Mono";
     niri_overview_type_to_launch_enabled = true;
     setup_wizard_enabled = false;
@@ -21,8 +22,9 @@
 
     screenshot = {
       save_to_file = true;
-      directory = "~/Pictures/Screenshots/";
+      directory = "/home/${username}/Pictures/Screenshots/";
       remember_last_region = true;
+      region_modifier = "shift";
     };
   };
 }

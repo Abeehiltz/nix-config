@@ -31,6 +31,7 @@
     iloader
     telegram-desktop
     outputs.packages.${pkgs.stdenv.hostPlatform.system}.ani2xcur
+    brave
 
     # Fonts
     fira-code

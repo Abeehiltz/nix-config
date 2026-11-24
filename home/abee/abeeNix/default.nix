@@ -8,7 +8,13 @@
 }:
 {
   imports = [
-    "${hmModules}/common"
+    "${hmModules}/profiles/base.nix"
+    "${hmModules}/profiles/dev.nix"
+    "${hmModules}/profiles/media.nix"
+    "${hmModules}/profiles/desktop.nix"
+    "${hmModules}/profiles/gaming.nix"
+    "${hmModules}/profiles/onepassword.nix"
+
     "${hmModules}/desktop/niri"
     "${hmModules}/desktop/umbriel"
     "${hmModules}/desktop/noctalia-shell"

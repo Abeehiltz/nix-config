@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nvf.homeModules.default
   ];
@@ -22,6 +23,9 @@
       };
 
       vim.options = {
+        shiftwidth = 2;
+        tabstop = 2;
+        expandtab = true;
         cursorline = true;
       };
 
@@ -37,7 +41,13 @@
       };
 
       vim.languages = {
-        nix.enable = true;
+        nix = {
+          enable = true;
+          format = {
+            enable = true;
+            type = [ "nixfmt-rs" ];
+          };
+        };
         python.enable = true;
         markdown.enable = true;
         helm.enable = true;
@@ -47,7 +57,7 @@
       vim.diagnostics.nvim-lint = {
         enable = true;
         linters_by_ft = {
-          yaml = ["yamllint"];
+          yaml = [ "yamllint" ];
         };
         lint_after_save = true;
       };

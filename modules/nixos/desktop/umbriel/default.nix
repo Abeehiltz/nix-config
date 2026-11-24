@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.umbriel.nixosModules.default
   ];
@@ -11,7 +12,7 @@
 
   services.displayManager.noctalia-greeter = {
     enable = true;
-    passwordless-sync-users = ["abee"];
+    passwordless-sync-users = [ "abee" ];
     settings = {
       cursor = {
         theme = "Bibata-Modern-Ice";

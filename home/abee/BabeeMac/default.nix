@@ -5,7 +5,8 @@
   hostname,
   hmModules,
   ...
-}: {
+}:
+{
   imports = [
     "${hmModules}/common"
   ];

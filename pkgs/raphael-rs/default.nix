@@ -24,7 +24,10 @@ rustPlatform.buildRustPackage {
     allowBuiltinFetchGit = true;
   };
 
-  nativeBuildInputs = [pkg-config makeWrapper];
+  nativeBuildInputs = [
+    pkg-config
+    makeWrapper
+  ];
 
   buildInputs = [
     libxkbcommon
@@ -39,12 +42,18 @@ rustPlatform.buildRustPackage {
 
   postInstall = ''
     wrapProgram $out/bin/raphael-xiv \
-      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [libGL wayland libxkbcommon]}
-    
+      --prefix LD_LIBRARY_PATH : ${
+        lib.makeLibraryPath [
+          libGL
+          wayland
+          libxkbcommon
+        ]
+      }
+
     mkdir -p $out/share/applications
     mkdir -p $out/share/icons/hicolor/64x64/apps
     cp ${src}/assets/favicon-64x64.png $out/share/icons/hicolor/64x64/apps/raphael-xiv.png
-    
+
     cat > $out/share/applications/raphael-xiv.desktop << EOF
     [Desktop Entry]
     Name=Raphael XIV

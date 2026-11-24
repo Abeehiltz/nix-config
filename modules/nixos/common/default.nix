@@ -7,7 +7,8 @@
   username,
   lib,
   ...
-}: {
+}:
+{
   # Boot config
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -38,7 +39,7 @@
 
   # For x11
   services.xserver.enable = true;
-  services.xserver.videoDrivers = ["amdgpu"];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   hardware.graphics.enable = true;
 
@@ -90,11 +91,11 @@
   # Group configuration
   users.groups.${username} = {
     gid = 3001;
-    members = ["${username}"];
+    members = [ "${username}" ];
   };
 
   users.groups.plugdev = {
-    members = ["${username}"];
+    members = [ "${username}" ];
   };
 
   # Allow unfree packages
@@ -122,9 +123,8 @@
 
     # configure python
     (python3.withPackages (
-      python-pkgs:
-        with python-pkgs; [
-        ]
+      python-pkgs: with python-pkgs; [
+      ]
     ))
   ];
 
@@ -143,9 +143,9 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        sansSerif = ["Noto Sans"];
-        serif = ["Noto Serif"];
-        monospace = ["DejaVu Sans Mono"];
+        sansSerif = [ "Noto Sans" ];
+        serif = [ "Noto Serif" ];
+        monospace = [ "DejaVu Sans Mono" ];
       };
     };
   };

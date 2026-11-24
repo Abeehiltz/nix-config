@@ -13,7 +13,7 @@
         "taskbar"
         "audio_visualizer"
       ];
-      center = ["workspaces"];
+      center = [ "workspaces" ];
       end = [
         "tray"
         "notifications"

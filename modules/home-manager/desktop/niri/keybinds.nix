@@ -3,10 +3,11 @@
   config,
   pkgs,
   ...
-}
-: let
-  apps = import ./applications.nix {inherit pkgs;};
-in {
+}:
+let
+  apps = import ./applications.nix { inherit pkgs; };
+in
+{
   programs.niri.settings.binds = with config.lib.niri.actions; {
     # Noctalia commands
     # Toggle launcher
@@ -83,22 +84,28 @@ in {
     "Super+Ctrl+F".action = expand-column-to-available-width;
 
     # Resize column
-    "Super+H".action.set-column-width = ["50%"];
-    "Super+Minus".action.set-column-width = ["-10%"];
-    "Super+Equal".action.set-column-width = ["+10%"];
+    "Super+H".action.set-column-width = [ "50%" ];
+    "Super+Minus".action.set-column-width = [ "-10%" ];
+    "Super+Equal".action.set-column-width = [ "+10%" ];
 
     # Floating
     "Super+Z".action = toggle-window-floating;
 
     # Screenshot settings
     ## Niri inbuilt screenshot tool using same windows keybind
-    "Super+Shift+S".action.screenshot = {show-pointer = false;};
+    "Super+Shift+S".action.screenshot = {
+      show-pointer = false;
+    };
 
     # Screenshot active window and copy to clipboard
-    "Ctrl+Print".action.screenshot-window = {write-to-disk = false;};
+    "Ctrl+Print".action.screenshot-window = {
+      write-to-disk = false;
+    };
 
     # Screenshot active screen
-    "Print".action.screenshot-screen = {write-to-disk = false;};
+    "Print".action.screenshot-screen = {
+      write-to-disk = false;
+    };
 
     # 1password
     "Ctrl+Shift+Space".action.spawn-sh = "1password --quick-access";

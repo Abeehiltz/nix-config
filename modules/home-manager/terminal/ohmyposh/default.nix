@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   # Oh my posh config for zsh
   programs.oh-my-posh = {
     enable = true;

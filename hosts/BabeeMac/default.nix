@@ -1,4 +1,4 @@
-{darwinModules, ...}: {
+{ darwinModules, ... }: {
   imports = [
     "${darwinModules}/common"
   ];

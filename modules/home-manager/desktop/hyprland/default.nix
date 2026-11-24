@@ -2,8 +2,8 @@
   inputs,
   hmModules,
   ...
-}
-: {
+}:
+{
   imports = [
     ./monitor.nix
     ./programs.nix

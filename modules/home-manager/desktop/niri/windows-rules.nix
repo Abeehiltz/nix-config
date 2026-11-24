@@ -2,11 +2,12 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.niri.settings = {
     window-rules = [
       {
-        matches = [{}];
+        matches = [ { } ];
         geometry-corner-radius = {
           top-left = 20.0;
           top-right = 20.0;
@@ -16,7 +17,7 @@
         clip-to-geometry = true;
       }
       {
-        matches = [{app-id = "dev.noctalia.Noctalia.Settings";}];
+        matches = [ { app-id = "dev.noctalia.Noctalia.Settings"; } ];
         open-floating = true;
         default-column-width = {
           fixed = 1080;
@@ -73,14 +74,14 @@
       }
       # Discord
       {
-        matches = [{app-id = "vesktop";}];
+        matches = [ { app-id = "vesktop"; } ];
         open-on-workspace = "discord";
       }
     ];
 
     layer-rules = [
       {
-        matches = [{namespace = "^noctalia-backdrop";}];
+        matches = [ { namespace = "^noctalia-backdrop"; } ];
         place-within-backdrop = true;
       }
     ];

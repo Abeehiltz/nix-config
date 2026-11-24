@@ -5,7 +5,8 @@
   hostname,
   hmModules,
   ...
-}: {
+}:
+{
   imports = [
     "${hmModules}/profiles/base.nix"
     "${hmModules}/profiles/dev.nix"

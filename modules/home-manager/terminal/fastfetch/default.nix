@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   home.file.".config/fastfetch/fastfetch.png".source = "${self}/theming/fastfetch.png";
 
   programs.fastfetch = {
@@ -96,7 +97,10 @@
         "break"
         {
           type = "colors";
-          block.range = [8 15];
+          block.range = [
+            8
+            15
+          ];
         }
       ];
     };

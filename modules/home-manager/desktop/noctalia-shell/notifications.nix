@@ -15,7 +15,7 @@
     };
     notification = {
       #background_opacity = 0.95;
-      filter_order = ["filter"];
+      filter_order = [ "filter" ];
 
       filter.filter = {
         enabled = true;

@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.umbriel.homeModules.default
     ./appearance.nix
@@ -14,7 +15,7 @@
     ./workspaces.nix
   ];
 
-  programs.umbriel.settings.include.optional.files = ["~/.config/umbriel/noctalia.toml"];
+  programs.umbriel.settings.include.optional.files = [ "~/.config/umbriel/noctalia.toml" ];
 
   xdg.portal = {
     enable = true;
@@ -41,7 +42,7 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory" = ["kitty.desktop"];
+      "inode/directory" = [ "kitty.desktop" ];
     };
   };
 }

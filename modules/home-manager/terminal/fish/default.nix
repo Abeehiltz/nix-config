@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   # Fish setup
   programs.fish = {
     enable = true;
@@ -93,7 +93,7 @@
   };
 
   # Symlink fish's history file to ~/.history.
-  home.activation.fishHistoryLink = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.fishHistoryLink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$HOME/.local/share/fish"
     if [ ! -e "$HOME/.history" ]; then
       touch "$HOME/.history"

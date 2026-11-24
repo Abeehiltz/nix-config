@@ -1,7 +1,7 @@
 {
   programs.noctalia.settings = {
     security = {
-      
+
     };
   };
-}-
+}

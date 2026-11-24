@@ -3,7 +3,8 @@
   inputs,
   themeFolder,
   ...
-}: let
+}:
+let
   vivianBackground = pkgs.stdenv.mkDerivation {
     name = "vivian.mkv";
     src = "${themeFolder}/vivian.mkv";
@@ -14,7 +15,7 @@
   };
   sddm-theme = inputs.silentSDDM.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
     theme = "silvia"; # select the config of your choice
-    extraBackgrounds = [vivianBackground];
+    extraBackgrounds = [ vivianBackground ];
     theme-overrides = {
       # Available options: https://github.com/uiriansan/SilentSDDM/wiki/Options
       "LoginScreen" = {
@@ -25,7 +26,8 @@
       };
     };
   };
-in {
+in
+{
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = false;
@@ -56,7 +58,7 @@ in {
   services.gnome.gnome-keyring.enable = true;
   security.polkit.enable = true;
   security.pam.services = {
-    hyprlock = {};
+    hyprlock = { };
     gdm.enableGnomeKeyring = true;
   };
 

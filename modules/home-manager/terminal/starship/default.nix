@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
@@ -14,7 +15,8 @@
       command_timeout = 1300;
       scan_timeout = 100;
 
-      format = ''        $username$hostname $directory $fill $kubernetes $helm $vcsh $git_branch$git_commit$git_state$git_status $docker_context$package$c$cpp$cmake$golang$guix_shell$java$lua$nodejs$perl$php$purescript$python$terraform$memory_usage$custom$os$battery$time$status 
+      format = ''
+        $username$hostname $directory $fill $kubernetes $helm $vcsh $git_branch$git_commit$git_state$git_status $docker_context$package$c$cpp$cmake$golang$guix_shell$java$lua$nodejs$perl$php$purescript$python$terraform$memory_usage$custom$os$battery$time$status 
         $character'';
 
       character = {

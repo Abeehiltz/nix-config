@@ -2,13 +2,14 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.niri-flake.nixosModules.niri
     inputs.noctalia-greeter.nixosModules.default
   ];
 
-  nixpkgs.overlays = [inputs.niri-flake.overlays.niri];
+  nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
 
   programs.niri = {
     enable = true;

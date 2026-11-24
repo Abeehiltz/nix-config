@@ -88,109 +88,116 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nix-darwin,
-    niri-flake,
-    nvf,
-    dw-proton,
-    nixos-xivlauncher-rb,
-    millennium,
-    stylix,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nix-darwin,
+      niri-flake,
+      nvf,
+      dw-proton,
+      nixos-xivlauncher-rb,
+      millennium,
+      stylix,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
 
-    pkgsFor = system:
-      import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-    # Function for Home Manager configuration
-    mkHomeConfiguration = system: username: hostname:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
+      pkgsFor =
+        system:
+        import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
-        extraSpecialArgs = {
-          inherit
-            inputs
-            outputs
-            username
-            hostname
-            self
-            ;
-          hmModules = "${self}/modules/home-manager";
-          themeFolder = ./theming;
+
+      # Function for Home Manager configuration
+      mkHomeConfiguration =
+        system: username: hostname:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          extraSpecialArgs = {
+            inherit
+              inputs
+              outputs
+              username
+              hostname
+              self
+              ;
+            hmModules = "${self}/modules/home-manager";
+            themeFolder = ./theming;
+          };
+          modules = [
+            stylix.homeModules.stylix
+            ./home/${username}/${hostname}
+          ];
         };
-        modules = [
-          stylix.homeModules.stylix
-          ./home/${username}/${hostname}
-        ];
+
+      # Function for NixOS system configuration
+      mkNixosConfiguration =
+        hostname: username:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit
+              inputs
+              outputs
+              hostname
+              username
+              ;
+            nixosModules = "${self}/modules/nixos";
+            themeFolder = ./theming;
+          };
+          modules = [
+            ./hosts/${hostname}
+            # For xivlauncher-rb
+            nixos-xivlauncher-rb.nixosModules.default
+          ];
+        };
+
+      # Function for MacOS
+      mkDarwinConfiguration =
+        hostname: username:
+        nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = {
+            inherit
+              inputs
+              outputs
+              hostname
+              username
+              ;
+            darwinModules = "${self}/modules/darwin";
+            themeFolder = ./theming;
+          };
+          modules = [ ./hosts/${hostname} ];
+        };
+    in
+    {
+      # packages.x86_64-linux.raphael-rs = (pkgsFor "x86_64-linux").callPackage ./pkgs/raphael-rs {
+      #   src = inputs.raphael-rs-src;
+      # };
+      packages.x86_64-linux.ani2xcur = (pkgsFor "x86_64-linux").callPackage ./pkgs/ani2xcur {
+        src = inputs.ani2xcur-src;
       };
 
-    # Function for NixOS system configuration
-    mkNixosConfiguration = hostname: username:
-      nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit
-            inputs
-            outputs
-            hostname
-            username
-            ;
-          nixosModules = "${self}/modules/nixos";
-          themeFolder = ./theming;
-        };
-        modules = [
-          ./hosts/${hostname}
-          # For xivlauncher-rb
-          nixos-xivlauncher-rb.nixosModules.default
-        ];
+      # Configure formatter
+      formatter.x86_64-linux = (pkgsFor "x86_64-linux").nixfmt-rs;
+
+      nixosConfigurations = {
+        abeeNix = mkNixosConfiguration "abeeNix" "abee";
       };
 
-    # Function for MacOS
-    mkDarwinConfiguration = hostname: username:
-      nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          inherit
-            inputs
-            outputs
-            hostname
-            username
-            ;
-          darwinModules = "${self}/modules/darwin";
-          themeFolder = ./theming;
-        };
-        modules = [./hosts/${hostname}];
+      darwinConfigurations = {
+        "BabeeMac" = mkDarwinConfiguration "BabeeMac" "abee";
       };
-  in {
-    # packages.x86_64-linux.raphael-rs = (pkgsFor "x86_64-linux").callPackage ./pkgs/raphael-rs {
-    #   src = inputs.raphael-rs-src;
-    # };
-    packages.x86_64-linux.ani2xcur = (pkgsFor "x86_64-linux").callPackage ./pkgs/ani2xcur {
-      src = inputs.ani2xcur-src;
-    };
 
-    # Configure formatter
-    formatter.x86_64-linux = (pkgsFor "x86_64-linux").alejandra;
-
-    nixosConfigurations = {
-      abeeNix = mkNixosConfiguration "abeeNix" "abee";
+      homeConfigurations = {
+        "abee@abeeNix" = mkHomeConfiguration "x86_64-linux" "abee" "abeeNix";
+        "abee@BabeeMac" = mkHomeConfiguration "aarch64-darwin" "abee" "BabeeMac";
+      };
     };
-
-    darwinConfigurations = {
-      "BabeeMac" = mkDarwinConfiguration "BabeeMac" "abee";
-    };
-
-    homeConfigurations = {
-      "abee@abeeNix" = mkHomeConfiguration "x86_64-linux" "abee" "abeeNix";
-      "abee@BabeeMac" = mkHomeConfiguration "aarch64-darwin" "abee" "BabeeMac";
-    };
-  };
 }

@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   # Zsh setup
   programs.zsh = {
     enable = true;

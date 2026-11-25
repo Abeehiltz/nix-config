@@ -2,7 +2,6 @@
 My nix config
 
 ## Screenshots
-TODO
 ![desktop screenshot with kitty terminal using fastfetch](./theming/screenshot1.png?raw=true)
 
 
@@ -14,10 +13,12 @@ File manager: Luciole (Noctalia)
 
 ## Overview
 This Nix configuration manages both NixOS (abeeNix) and nix-darwin (BabeeMac) systems using Home Manager.
+It also manages all my containers and VM with NixOS on Proxmox.
 
 ### Hosts
 - **abeeNix**: NixOS system with Umbriel desktop environment
 - **BabeeMac**: nix-darwin system (not actively configured in this repo)
+- **glance**: NixOS LXC container with the Glance dashboard application deployed in Proxmox.
 
 ### Modules Structure
 - **Terminal**: fish shell, starship prompt, zoxide, eza, fd, fzf, jq, git, ssh, neovim, btop, fastfetch
@@ -29,6 +30,30 @@ This Nix configuration manages both NixOS (abeeNix) and nix-darwin (BabeeMac) sy
 - **Gaming**: steam, 1password, lact, xivlauncher-rb
 - **Media**: Various media tools
 - **Security**: 1password integration
+
+## Commands to remember:
+### For desktop
+```bash
+# Update flakes 
+sudo nix flake update --flake ~/nix-config/
+
+# Rebuild nixos config: 
+sudo nixos-rebuild switch --flake ~/nix-config/
+
+# home-manager config: 
+home-manager switch --flake ~/nix-config
+```
+
+### For Servers
+```bash
+# For first configuration, before username is created.
+nixos-rebuild test --flake .#glance --target-host root@<container-ip> --build-host localhost
+nixos-rebuild switch --flake .#glance --target-host root@<container-ip> --build-host localhost
+
+# Afterwards
+nixos-rebuild switch --flake .#glance --target-host abee@<container-ip> --build-host localhost --sudo
+
+```
 
 ## Inspirations
 https://github.com/AlexNabokikh/nix-config for how to setup a modular nixos repository

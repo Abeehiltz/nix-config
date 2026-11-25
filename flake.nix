@@ -189,6 +189,7 @@
 
       nixosConfigurations = {
         abeeNix = mkNixosConfiguration "abeeNix" "abee";
+        glance = mkNixosConfiguration "glance" "abee";
       };
 
       darwinConfigurations = {

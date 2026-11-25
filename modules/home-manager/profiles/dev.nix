@@ -20,6 +20,7 @@
     dnsutils
     openssl
     inetutils
+    terraform
 
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
     mcp-nixos

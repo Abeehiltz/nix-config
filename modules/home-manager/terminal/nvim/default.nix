@@ -33,6 +33,7 @@
 
       vim.extraPackages = [
         pkgs.yamllint
+        pkgs.terraform
       ];
 
       vim.clipboard = {
@@ -52,6 +53,17 @@
         markdown.enable = true;
         helm.enable = true;
         yaml.enable = true;
+        terraform = {
+          enable = true;
+          lsp = {
+            enable = true;
+            servers = [ "terraform-ls" ];
+          };
+          format = {
+            enable = true;
+            type = [ "terraform" ];
+          };
+        };
       };
 
       vim.diagnostics.nvim-lint = {

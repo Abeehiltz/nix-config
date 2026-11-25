@@ -14,14 +14,6 @@
   networking.hostName = hostname;
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  # Cache DNS lookups to improve performance
-  services.resolved = {
-    extraConfig = ''
-      Cache=true
-      CacheFromLocalhost=true
-    '';
-  };
-
   # Copy the exact value from the container's /etc/nixos/configuration.nix
   system.stateVersion = "25.11";
 

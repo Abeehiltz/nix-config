@@ -44,7 +44,7 @@
     };
 
     # Opening programs
-    "Mod+Return" = {
+    "Mod+T" = {
       action = "spawn kitty";
       repeat = false;
     };
@@ -61,7 +61,7 @@
       repeat = false;
     };
     "Mod+Escape" = "window-kill";
-    "Mod+T" = {
+    "Mod+C" = {
       action = "window-toggle-floating";
       repeat = false;
     };

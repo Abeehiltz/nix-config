@@ -11,7 +11,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    "${nixosModules}/common"
+    "${nixosModules}/profiles/desktop.nix"
     "${nixosModules}/desktop/niri"
     "${nixosModules}/desktop/umbriel"
     "${nixosModules}/programs/steam"

@@ -2,13 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
   username,
-  lib,
   ...
 }:
 {
+  imports = [ ./base.nix ];
   # Boot config
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -49,70 +48,17 @@
     2234 # Soulseek
   ];
 
-  # Set your time zone.
-  time.timeZone = "Europe/Luxembourg";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fr_LU.utf8";
-    LC_IDENTIFICATION = "fr_LU.utf8";
-    LC_MEASUREMENT = "fr_LU.utf8";
-    LC_MONETARY = "fr_LU.utf8";
-    LC_NAME = "en_GB.UTF-8";
-    LC_NUMERIC = "fr_LU.utf8";
-    LC_PAPER = "fr_LU.utf8";
-    LC_TELEPHONE = "fr_LU.utf8";
-    LC_TIME = "en_GB.UTF-8";
-  };
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
-  # User configuration
-  users.users.${username} = {
-    isNormalUser = true;
-    uid = 3001;
-    shell = pkgs.fish;
-    description = "Abee user";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxS+EO9has3Kcuo+O+kNRroyWMjV+RUfOATTzEmmVzR"
-    ];
-  };
-
-  # Group configuration
-  users.groups.${username} = {
-    gid = 3001;
-    members = [ "${username}" ];
-  };
-
   users.groups.plugdev = {
     members = [ "${username}" ];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
   environment.systemPackages = with pkgs; [
-    git
-    wget
-    vim
-    zsh
-
     # For customizing keyboard
     via
     qmk
@@ -150,9 +96,6 @@
     };
   };
 
-  # List services that you want to enable:
-  services.resolved.enable = true;
-
   # For strata file explorer to manage network shares and disk management
   services.udisks2.enable = true;
   services.gvfs.enable = true;
@@ -162,23 +105,8 @@
     pkgs.qmk-udev-rules
   ];
 
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-    };
-    openFirewall = true;
-  };
-
   # Enable xwayland
   programs.xwayland.enable = true;
-
-  # Shell setup
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
 
   qt.enable = true;
 
@@ -195,14 +123,6 @@
 
   # Logitech mouse configuration
   hardware.logitech.wireless.enable = true;
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 15d";
-  };
-  nix.optimise.automatic = true;
-  nix.optimise.dates = "weekly";
 
   # For iPhone
   services.usbmuxd.enable = true;

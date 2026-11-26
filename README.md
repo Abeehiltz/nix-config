@@ -47,6 +47,9 @@ home-manager switch --flake ~/nix-config
 ### For Servers
 ```bash
 # For first configuration, before username is created.
+## If using secrets, run and get the age1 key to add to .sops.yaml
+ssh-keyscan <IP> 2>/dev/null | ssh-to-age 
+
 nixos-rebuild test --flake .#glance --target-host root@<container-ip> --build-host localhost
 nixos-rebuild switch --flake .#glance --target-host root@<container-ip> --build-host localhost
 

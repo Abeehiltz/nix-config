@@ -197,6 +197,7 @@
       nixosConfigurations = {
         abeeNix = mkNixosConfiguration "abeeNix" "abee";
         glance = mkNixosConfiguration "glance" "abee";
+        dmz-reverse-proxy = mkNixosConfiguration "dmz-reverse-proxy" "abee";
       };
 
       darwinConfigurations = {

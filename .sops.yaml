@@ -1,9 +1,15 @@
 keys:
   - &abee age1qa0f85n6up0xaw2vyx6zf06d80rlamw0dxnmd983huuvangn294sj4rlx7
   - &glance age1jj3hk34zkx5alr5dysffcu6pf7c58p5x3xwjfg6j2pqwf3uz934qs7rch5
+  - &dmz-reverse-proxy age1sqejg3g5nyx4qsmcp4x2kxlxqmytj5mefenn304aje3rzn5tfglsarh5xm
 creation_rules:
   - path_regex: secrets/glance\.yaml$
     key_groups:
       - age:
           - *abee
           - *glance
+  - path_regex: secrets/dmz-reverse-proxy\.yaml$
+    key_groups:
+      - age: 
+        - *abee
+        - *dmz-reverse-proxy

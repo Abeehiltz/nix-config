@@ -12,6 +12,8 @@
     # nixOS Hardware for optimisation
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    sops-nix.url = "github:Mic92/sops-nix";
+
     # niri-flake to configure niri through nix
     niri-flake = {
       #url = "github:sodiboo/niri-flake";
@@ -92,6 +94,7 @@
     {
       self,
       nixpkgs,
+      sops-nix,
       home-manager,
       nix-darwin,
       niri-flake,
@@ -153,6 +156,7 @@
           };
           modules = [
             ./hosts/${hostname}
+            sops-nix.nixosModules.sops
             # For xivlauncher-rb
             nixos-xivlauncher-rb.nixosModules.default
           ];
@@ -173,7 +177,10 @@
             darwinModules = "${self}/modules/darwin";
             themeFolder = ./theming;
           };
-          modules = [ ./hosts/${hostname} ];
+          modules = [
+            ./hosts/${hostname}
+            sops-nix.darwinModules.sops
+          ];
         };
     in
     {

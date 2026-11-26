@@ -60,6 +60,9 @@
 
   environment.systemPackages = with pkgs; [
     # For customizing keyboard
+    sops
+    age
+    ssh-to-age
     via
     qmk
     qmk-udev-rules

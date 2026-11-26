@@ -2,6 +2,7 @@
   modulesPath,
   nixosModules,
   hostname,
+  config,
   ...
 }:
 let
@@ -20,11 +21,25 @@ in
   # Copy the exact value from the container's /etc/nixos/configuration.nix
   system.stateVersion = "25.11";
 
+  # SECRET MANAGEMENT
+  sops = {
+    defaultSopsFile = ../../secrets/glance.yaml;
+
+    secrets.jellyfin_api_key = { };
+
+    templates."glance.env" = {
+      content = ''
+        JELLYFIN_API_KEY=${config.sops.placeholder.jellyfin_api_key}
+      '';
+      restartUnits = [ "glance.service" ];
+    };
+  };
+
   # Glance config
   services.glance = {
-    environmentFile = "/var/lib/secrets/glance.env";
     enable = true;
     openFirewall = true;
+    environmentFile = config.sops.templates."glance.env".path;
     settings = {
       server = {
         host = "0.0.0.0"; # default is localhost only

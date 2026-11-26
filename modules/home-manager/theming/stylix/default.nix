@@ -14,7 +14,6 @@
     };
 
     targets = {
-      wayprompt.enable = false;
       zen-browser.enable = false; # Disable to use blur
       #      zen-browser.profileNames = [
       #       "default"

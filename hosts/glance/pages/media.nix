@@ -46,6 +46,7 @@ in
     {
       size = "small";
       widgets = [
+        (import ./widgets/jellyfin-stats.nix { inherit jellyfin; })
         {
           type = "rss";
           title = "Manga releases on Nyaa";

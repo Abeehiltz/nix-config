@@ -1,6 +1,7 @@
 {{/* Required config options */}}
 {{ $baseURL := .Options.StringOr "base-url" "" }}
 {{ $apiKey := .Options.StringOr "api-key" "" }}
+{{ $auth := concat "MediaBrowser Token=\"" $apiKey "\"" }}
 {{ $userName := .Options.StringOr "user-name" "" }}
 
 {{/* Required config options for "latest" mode */}}
@@ -34,7 +35,7 @@
   {{/* Fetch user ID */}}
   {{ $userID := "" }}
   {{ $usersCall := newRequest (print $baseURL "/Users")
-      | withParameter "api_key" $apiKey
+      | withHeader "Authorization" $auth
       | withHeader "Accept" "application/json"
       | getResponse }}
 
@@ -55,7 +56,7 @@
       {{/* Fetch library ID */}}
       {{ $libraryID := "" }}
       {{ $userViewsCall := newRequest (print $baseURL "/UserViews")
-          | withParameter "api_key" $apiKey
+          | withHeader "Authorization" $auth
           | withParameter "userId" $userID
           | withHeader "Accept" "application/json"
           | getResponse }}
@@ -72,7 +73,7 @@
       {{ else }}
         {{/* Fetch latest items */}}
         {{ $latestCall := newRequest (print $baseURL "/Users/" $userID "/Items/Latest")
-            | withParameter "api_key" $apiKey
+            | withHeader "Authorization" $auth
             | withParameter "Limit" $itemCount
             | withParameter "ParentId" $libraryID
             | withParameter "IncludeItemTypes" $mediaTypes
@@ -86,7 +87,7 @@
 
       {{/* Fetch next up items */}}
       {{ $nextUpCall := newRequest (print $baseURL "/Shows/NextUp")
-        | withParameter "api_key" $apiKey
+        | withHeader "Authorization" $auth
         | withParameter "UserId" $userID
         | withParameter "Limit" $itemCount
         | withParameter "EnableResumable" "true"
@@ -109,6 +110,7 @@
             {{/* Common item variables */}}
             {{ $mediaType := $item.String "Type" }}
             {{ $title := $item.String "Name" }}
+            {{ $episodeTitle := $title }}
             {{ $itemID := $item.String "Id" }}
 
             {{/* Media type specific variables */}}
@@ -147,9 +149,9 @@
             {{ $thumbURL := "" }}
             {{ if not (eq $playPercentage "") }}
               {{/* $thumbURL = concat $baseURL "/Items/" $itemID "/Images/Primary?api_key=" $apiKey "&percentPlayed=" $playPercentage */}}
-              {{ $thumbURL = concat $baseURL "/Items/" $itemID "/Images/Primary?api_key=" $apiKey }}
+              {{ $thumbURL = concat $baseURL "/Items/" $itemID "/Images/Primary?fillWidth=220&fillHeight=330&quality=85" }}
             {{ else }}
-              {{ $thumbURL = concat $baseURL "/Items/" $itemID "/Images/Primary?api_key=" $apiKey }}
+              {{ $thumbURL = concat $baseURL "/Items/" $itemID "/Images/Primary?fillWidth=220&fillHeight=330&quality=85" }}
             {{ end }}
 
             <a class="card widget-content-frame" href="{{ $linkURL | safeURL }}">
@@ -197,11 +199,14 @@
               <div class="grow padding-inline-widget margin-top-10 margin-bottom-10">
                 <ul class="flex flex-column justify-evenly margin-bottom-3 {{ if $isSmallColumn }}size-h6{{ end }}" style="height: 100%;">
                   {{ if eq $mode "latest" }}
-                    {{ if or (eq $mediaType "Series") (eq $mediaType "Episode") }}
-                      <ul class="list-horizontal-text flex-nowrap">
-                        <li class="color-primary shrink-0">{{ $unwatchedEpisodeCount }}</li>
-                        <li class="text-truncate">{{ $title }}</li>
-                      </ul>
+                  {{ if eq $mediaType "Episode" }}
+                    <ul class="list-horizontal-text flex-nowrap">
+                      <li class="color-primary shrink-0">S{{ printf "%02d" $season }}E{{ printf "%02d" $episode }}</li>
+                      <li class="text-truncate">{{ $title }}</li>
+                    </ul>
+                      <li class="size-h6 color-subdue text-truncate">{{ $episodeTitle }}</li>
+                    {{ else if eq $mediaType "Series" }}
+                     <li class="text-truncate">{{ $title }}</li>
                     {{ else if eq $mediaType "MusicAlbum" }}
                       <ul class="list-horizontal-text flex-nowrap">
                         <li class="color-primary text-truncate">{{ $artist }}</li>

@@ -4,6 +4,11 @@
       blur = true;
       blur_optimized = true;
     }
+    # maximise by default if alone
+    {
+      match.is_alone = true;
+      default_maximize = true;
+    }
     {
       match.app_id = "^dev.noctalia.Noctalia$";
       default_floating = true;
